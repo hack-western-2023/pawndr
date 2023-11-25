@@ -1,7 +1,12 @@
+import os
+from dotenv import load_dotenv
+
 from infobip_channels.sms.channel import SMSChannel
 
-BASE_URL = 'https://mmxdyw.api.infobip.com'
-API_KEY = '020ae8b21255071eff0b8d6e0affa564-ff451a78-1793-4cb2-b4d4-1bb0b5a2053b'
+load_dotenv()
+
+BASE_URL = os.getenv('INFOBIP_URL')
+API_KEY = os.getenv('INFOBIP_KEY')
 RECIPIENT = '17789298780'
 
 def msg_bryson(msg: str):
