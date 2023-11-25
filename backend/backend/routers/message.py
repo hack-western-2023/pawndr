@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 
 from backend import messaging
 from backend import db
-from routers import users
+import users
 from backend import prompt
 
 router = APIRouter()
@@ -66,7 +66,7 @@ async def message_inbox(msg: dict):
     phoneNumber = result['from']
 
     sender = users.get_user_by_phone(phoneNumber)
-    sender = sender[0]['name']
+    sender = sender['name']
 
     await upload_message(sender, message, phoneNumber)
     
