@@ -36,5 +36,3 @@ def msg_bryson(msg: str):
 
     # See the delivery reports.
     return(delivery_reports)
-
-# comment to trigger github workflow
