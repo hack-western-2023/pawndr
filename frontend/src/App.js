@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./App.css";
+import loginpage from "./assets/loginpage.png";
+import Login from "./components/login";
 
 function App() {
   const [data, setData] = useState(null);
@@ -20,8 +22,18 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      {data ? <p>Data: {JSON.stringify(data)}</p> : <p>Loading...</p>}
+    <div className="App" style={{ 
+      backgroundImage: `url(${loginpage})`, 
+      backgroundSize: 'cover', 
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat',
+      width: '100vw',
+      height: '100vh',
+      backgroundAttachment: 'fixed',
+      overflow: 'hidden'
+    }}>
+      <Login />
+      {data ? <p>Data: {JSON.stringify(data)}</p> : <p></p>}
     </div>
   );
 }
