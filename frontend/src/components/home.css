@@ -1,0 +1,25 @@
+.pawndr {
+    color: var(--dark-3, #3C4356);
+    font-family: Inter;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    position: absolute;
+    top: 61px;
+    left: 150px;
+}
+
+.card-container {
+    width: 18rem;
+    background-color: #F8F9FA;
+    color: #212529;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    top: 100px;
+    left: 150px;
+  }
+  
+  .card-title {
+    color: #007BFF;
+  }

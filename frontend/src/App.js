@@ -4,6 +4,7 @@ import "./App.css";
 import loginpage from "./assets/loginpage.png";
 import Login from "./components/login";
 import CreateAccount from "./components/createaccount";
+import Home from "./components/home";
 
 function App() {
   const [data, setData] = useState(null);
@@ -26,6 +27,7 @@ function App() {
     <div className="App">
       <Login />
       <CreateAccount/>
+      <Home/>
       {data ? <p>Data: {JSON.stringify(data)}</p> : <p></p>}
     </div>
   );

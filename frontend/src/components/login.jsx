@@ -14,6 +14,7 @@ const Login = () => {
             backgroundAttachment: 'fixed',
             overflow: 'hidden'
           }}>
+            
             <div className='container'>
                 <div className='title'>Hello! Welcome to Pawndr</div>
                 <div className='logintitle'>Please log in:</div>
