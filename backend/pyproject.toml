@@ -16,6 +16,7 @@ pydantic = "^1.10.8"
 fastapi = "^0.104.1"
 uvicorn = {extras = ["standard"], version = "^0.24.0.post1"}
 bcrypt = "^4.0.1"
+datetime = "^5.3"
 
 [build-system]
 requires = ["poetry-core"]
