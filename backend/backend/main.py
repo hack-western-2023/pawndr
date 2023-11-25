@@ -1,6 +1,4 @@
 from fastapi import FastAPI
-# from fastapi.responses import JSONResponse
-from fastapi.encoders import jsonable_encoder
 from motor.motor_asyncio import AsyncIOMotorClient
 from dotenv import load_dotenv
 import os
