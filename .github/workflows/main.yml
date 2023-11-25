@@ -18,7 +18,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.9.7'
+        python-version: '3.8'
 
     - name: Install Poetry
       run: |
@@ -26,7 +26,6 @@ jobs:
 
     - name: Install dependencies
       run: |
-        cd backend
         poetry install
 
     - name: Create .env file
@@ -45,7 +44,7 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: '22'
         source: 'backend/'
-        target: '/pawndr/backend'
+        target: '/path/to/target/directory'
 
     - name: Deploy application
       uses: appleboy/ssh-action@master
@@ -55,4 +54,5 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: '22'
         script: |
+          cd /path/to/target/directory
           poetry run uvicorn main:app --host 0.0.0.0 --port 8000
