@@ -1,11 +1,11 @@
 import React from 'react';
-import "./login.css";
-import loginpage from '../assets/loginpage.png'
+import "./createaccount.css";
+import createbackground from '../assets/createbackground.png'
 
-const Login = () => {
+const CreateAccount = () => {
     return (
         <div style={{ 
-            backgroundImage: `url(${loginpage})`, 
+            backgroundImage: `url(${createbackground})`, 
             backgroundSize: 'cover', 
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
@@ -15,8 +15,8 @@ const Login = () => {
             overflow: 'hidden'
           }}>
             <div className='container'>
-                <div className='title'>Hello! Welcome to Pawndr</div>
-                <div className='logintitle'>Please log in:</div>
+                <div className='title'>So happy you're joining us!</div>
+                <div className='logintitle'>Create your account:</div>
             </div>
             <div className='inputs'>
 
@@ -24,6 +24,7 @@ const Login = () => {
 
         </div>
     )
+
 }
 
-export default Login
+export default CreateAccount
