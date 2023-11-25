@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./App.css";
-import loginpage from "./assets/loginpage.png";
 import Login from "./components/login";
 import CreateAccount from "./components/createaccount";
 import Home from "./components/home";
@@ -25,9 +24,7 @@ function App() {
 
   return (
     <div className="App">
-      <Login />
-      <CreateAccount/>
-      <Home/>
+      <CreateAccount />
       {data ? <p>Data: {JSON.stringify(data)}</p> : <p></p>}
     </div>
   );
