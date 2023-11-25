@@ -1,4 +1,3 @@
-import openai
 from dotenv import load_dotenv
 import os
 import requests
@@ -18,16 +17,19 @@ def get_openai_response(query):
 
   payload = {
     "model": "text-davinci-003",
-    'prompt': query,
+    "prompt": query,
     'max_tokens': 1000  # Customize this based on your requirements
   }
 
   response = requests.post(OPENAI_ENDPOINT, headers=headers, json=payload)
 
   if response.status_code == 200:
-    return response.json()
+    print("hello")
+    ans = response.json()['choices'][0]['text']
+    ans = ans[2:]
+    return ans
   else:
-    return response.choices[0].text.strip()
+    return "Error"
 
 # Example usage
 query = "What is the capital of France?"
