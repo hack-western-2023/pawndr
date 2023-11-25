@@ -34,6 +34,15 @@ async def get_messages_today_by_phone(phone_number: str):
     today_messages = await get_messages_from_day_by_phone(phone_number, today)
     return today_messages
     
+def parse_messages_for_openai(messages):
+    formatted_messages = []
+
+    for message in messages:
+        formatted_message = f"{message['sender']}: {message['content']}"
+        formatted_messages.append(formatted_message)
+
+    formatted_messages_str = '\n'.join(formatted_messages)
+    return formatted_messages_str   
 
 @router.get('/bryson/{msg}')
 async def message_bryson(msg: str):
