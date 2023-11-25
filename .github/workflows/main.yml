@@ -51,7 +51,7 @@ jobs:
         echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan -H "$SERVER_IP" >> ~/.ssh/known_hosts
-        scp -r backend/ $SERVER_USER@$SERVER_IP:/pawnder/backend
+        scp -r backend/ $SERVER_USER@$SERVER_IP:/home/omarcodes2/pawnder/backend
 
     - name: Deploy application
       uses: appleboy/ssh-action@master
