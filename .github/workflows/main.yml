@@ -61,7 +61,7 @@ jobs:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
       run: |
         ssh -i ~/.ssh/id_rsa $SERVER_USER@$SERVER_IP << 'EOF'
-          cd /path/to/target/directory
+          cd /home/omarcodes2/pawndr/backend/backend
           # Any additional commands required for setting up the environment
           poetry install
           poetry run uvicorn main:app --host 0.0.0.0 --port 8000
