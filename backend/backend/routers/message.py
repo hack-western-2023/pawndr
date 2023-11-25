@@ -2,7 +2,7 @@ from fastapi import APIRouter
 from pydantic import BaseModel
 from datetime import datetime, timedelta
 
-#from backend import messaging
+from backend import messaging
 from backend import db
 
 router = APIRouter()
@@ -50,30 +50,14 @@ async def upload_message(sender, content, phoneNumber):
     # Insert the new message into the 'message_collection'
     result = await db.message_collection.insert_one(new_message)
 
-# @router.get('/bryson/{msg}')
-# async def message_bryson(msg: str):
-#     result = messaging.msg_bryson(msg)
+@router.get('/bryson/{msg}')
+async def message_bryson(msg: str):
+    result = messaging.msg_bryson(msg)
 
-#     return result.raw_response.json()
+    return result.raw_response.json()
 
-@router.get('/wagwan')
-async def wagwan(msg: str):
+@router.post('/inbox')
+async def message_inbox(msg: dict):
+    result = msg['results'][0]
 
-    return {'message': 'wagwan'}
-
-# Example usage
-async def main():
-    from backend import prompt
-    messages = await get_messages_today_by_phone("2894007386")
-    messages = parse_messages_for_openai(messages)
-    print(messages)
-    new_message = prompt.gen_next_message_reflect(messages)
-    await upload_message("Pawn", new_message, "2894007386")
-    
-
-# Run the main function
-if __name__ == "__main__":
-    import asyncio
-
-    # Run the asynchronous main function
-    asyncio.run(main())
+    return await upload_message('boondocks', result['text'], result['from'])
