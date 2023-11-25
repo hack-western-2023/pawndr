@@ -24,21 +24,17 @@ jobs:
       run: |
         pip install poetry
     
-    - name: Change to backend directory
-      run: |
-        cd backend
-        pwd
         
     - name: Install dependencies
       run: |
-        pwd
-        ls
+        cd backend
         poetry install
     
 
 
     - name: Create .env file
       run: |
+        cd backend
         echo "INFOBIP_KEY=${{ secrets.INFOBIP_KEY }}" >> backend/.env
         echo "INFOBIP_URL=${{ secrets.INFOBIP_URL }}" >> backend/.env
         echo "MONGODB_URI=${{ secrets.MONGODB_URI }}" >> backend/.env
