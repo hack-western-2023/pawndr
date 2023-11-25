@@ -41,15 +41,17 @@ jobs:
         echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> backend/.env
         echo "OPENAI_ENDPOINT=${{ secrets.OPENAI_ENDPOINT }}" >> backend/.env
 
-    - name: Copy files to the server
-      uses: appleboy/scp-action@master
-      with:
-        host: ${{ secrets.SERVER_IP }}
-        username: ${{ secrets.SERVER_USER }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        port: '22'
-        source: 'backend/'
-        target: '/pawndr/backend'
+    - name: Custom SCP to Server
+      env:
+        SERVER_IP: ${{ secrets.SERVER_IP }}
+        SERVER_USER: ${{ secrets.SERVER_USER }}
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      run: |
+        mkdir -p ~/.ssh
+        echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan -H "$SERVER_IP" >> ~/.ssh/known_hosts
+        scp -r backend/ $SERVER_USER@$SERVER_IP:/pawnder/backend
 
     - name: Deploy application
       uses: appleboy/ssh-action@master
