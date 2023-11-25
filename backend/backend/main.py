@@ -1,6 +1,9 @@
 from fastapi import FastAPI
 from motor.motor_asyncio import AsyncIOMotorClient
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
 app = FastAPI()
 
 from fastapi.middleware.cors import CORSMiddleware
@@ -15,16 +18,20 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-client = AsyncIOMotorClient('mongodb+srv://Admin:hackwestern@cluster0.v52qzqz.mongodb.net/')
-db = client.your_database_name
+mongodb_uri = os.getenv('MONGODB_URI')
+client = AsyncIOMotorClient(mongodb_uri)
+db = client.test
 
 @app.get("/")
 def root():
     return {'message': 'roll stangs'}
 
 @app.get("/users/{user_id}")
-def read_user(user_id: str):
-    user = db.users.find_one({"_id": user_id})
-    if user:
-        return user
-    return {"error": "User not found"}
+async def read_user(user_id: str):
+    try:
+        user = await db.test.find_one({"_id": user_id})
+        if user:
+            return user
+        return {"error": "User not found"}
+    except Exception as e:
+        return {"error": str(e)}
