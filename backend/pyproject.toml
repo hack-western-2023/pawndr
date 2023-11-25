@@ -6,7 +6,7 @@ authors = ["Bryson Wu <brysonwu@student.ubc.ca>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.10.0"
+python = "^3.9.5"
 motor = "^3.3.2"
 fastapi = {extras = ["all"], version = "^0.104.1"}
 
