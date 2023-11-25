@@ -6,9 +6,12 @@ authors = ["Bryson Wu <brysonwu@student.ubc.ca>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.10.0"
+python = "^3.9.5"
+infobip-api-python-sdk = "^5.0.1"
 motor = "^3.3.2"
-fastapi = {extras = ["all"], version = "^0.104.1"}
+pydantic = "^1.10.8"
+fastapi = "^0.104.1"
+uvicorn = {extras = ["standard"], version = "^0.24.0.post1"}
 
 
 [build-system]
