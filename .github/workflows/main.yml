@@ -27,6 +27,11 @@ jobs:
     - name: Install dependencies
       run: |
         poetry install
+    
+    - name: Change to backend directory
+      run: |
+        cd backend
+        pwd
 
     - name: Create .env file
       run: |
