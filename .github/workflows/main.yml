@@ -1,0 +1,58 @@
+name: Deploy to Google Cloud
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'backend/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+
+    - name: Install Poetry
+      run: |
+        pip install poetry
+
+    - name: Install dependencies
+      run: |
+        poetry install
+
+    - name: Create .env file
+      run: |
+        echo "INFOBIP_KEY=${{ secrets.INFOBIP_KEY }}" >> backend/.env
+        echo "INFOBIP_URL=${{ secrets.INFOBIP_URL }}" >> backend/.env
+        echo "MONGODB_URI=${{ secrets.MONGODB_URI }}" >> backend/.env
+        echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> backend/.env
+        echo "OPENAI_ENDPOINT=${{ secrets.OPENAI_ENDPOINT }}" >> backend/.env
+
+    - name: Copy files to the server
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.SERVER_IP }}
+        username: ${{ secrets.SERVER_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: '22'
+        source: 'backend/'
+        target: '/path/to/target/directory'
+
+    - name: Deploy application
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SERVER_IP }}
+        username: ${{ secrets.SERVER_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: '22'
+        script: |
+          cd /path/to/target/directory
+          poetry run uvicorn main:app --host 0.0.0.0 --port 8000
