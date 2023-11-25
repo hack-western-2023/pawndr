@@ -64,5 +64,6 @@ jobs:
           cd /home/omarcodes2/pawndr/backend/backend
           # Any additional commands required for setting up the environment
           poetry install
-          poetry run uvicorn main:app --host 0.0.0.0 --port 8000
+          nohup poetry run uvicorn main:app --host 0.0.0.0 --port 8000 &> /dev/null &
         EOF
+
