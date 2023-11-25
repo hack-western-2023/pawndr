@@ -6,7 +6,7 @@ app = FastAPI()
 client = AsyncIOMotorClient('mongodb+srv://Admin:hackwestern@cluster0.v52qzqz.mongodb.net/')
 db = client.your_database_name
 
-@app.route("/")
+@app.get("/")
 def root():
     return {'message': 'roll stangs'}
 
