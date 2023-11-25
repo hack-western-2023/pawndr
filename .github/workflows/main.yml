@@ -36,11 +36,11 @@ jobs:
     - name: Create .env file
       run: |
         cd backend
-        echo "INFOBIP_KEY=${{ secrets.INFOBIP_KEY }}" >> backend/.env
-        echo "INFOBIP_URL=${{ secrets.INFOBIP_URL }}" >> backend/.env
-        echo "MONGODB_URI=${{ secrets.MONGODB_URI }}" >> backend/.env
-        echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> backend/.env
-        echo "OPENAI_ENDPOINT=${{ secrets.OPENAI_ENDPOINT }}" >> backend/.env
+        echo "INFOBIP_KEY=${{ secrets.INFOBIP_KEY }}" >> .env
+        echo "INFOBIP_URL=${{ secrets.INFOBIP_URL }}" >> .env
+        echo "MONGODB_URI=${{ secrets.MONGODB_URI }}" >> .env
+        echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> .env
+        echo "OPENAI_ENDPOINT=${{ secrets.OPENAI_ENDPOINT }}" >> .env
 
     - name: Custom SCP to Server
       env:
@@ -52,7 +52,7 @@ jobs:
         echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan -H "$SERVER_IP" >> ~/.ssh/known_hosts
-        scp -r backend/ $SERVER_USER@$SERVER_IP:/home/omarcodes2/pawndr/backend
+        scp -r backend/ $SERVER_USER@$SERVER_IP:/home/omarcodes2/pawndr
 
     - name: Deploy application
       uses: appleboy/ssh-action@master
