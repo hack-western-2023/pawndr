@@ -24,10 +24,6 @@ jobs:
       run: |
         pip install poetry
 
-    - name: Install dependencies
-      run: |
-        poetry install
-
     - name: Create .env file
       run: |
         echo "INFOBIP_KEY=${{ secrets.INFOBIP_KEY }}" >> backend/.env
@@ -44,7 +40,14 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: '22'
         source: 'backend/'
-        target: '/path/to/target/directory'
+        target: '/pawndr/backend'
+      
+    - name: Enter Backend
+      run: cd /pawndr/backend
+
+    - name: Install dependencies
+      run: |
+        poetry install
 
     - name: Deploy application
       uses: appleboy/ssh-action@master
@@ -54,5 +57,4 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: '22'
         script: |
-          cd /path/to/target/directory
           poetry run uvicorn main:app --host 0.0.0.0 --port 8000
