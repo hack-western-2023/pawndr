@@ -31,6 +31,8 @@ jobs:
         
     - name: Install dependencies
       run: |
+        pwd
+        ls
         poetry install
     
 
