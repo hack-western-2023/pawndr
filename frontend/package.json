@@ -1,12 +1,18 @@
 {
   "dependencies": {
+    "@chakra-ui/react": "^2.8.2",
+    "@chakra-ui/system": "^2.6.2",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "animate.css": "^4.1.1",
     "axios": "^1.6.2",
+    "framer-motion": "^10.16.5",
     "react": "^18.2.0",
     "react-auth-kit": "^3.0.0-alpha.44",
+    "react-bootstrap": "^2.9.1",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.20.0",
     "react-scripts": "5.0.1",
