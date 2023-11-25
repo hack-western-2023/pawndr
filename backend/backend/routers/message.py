@@ -2,7 +2,7 @@ from fastapi import APIRouter
 from pydantic import BaseModel
 from datetime import datetime, timedelta
 
-from backend import messaging
+#from backend import messaging
 from backend import db
 
 router = APIRouter()
@@ -42,10 +42,27 @@ def parse_messages_for_openai(messages):
         formatted_messages.append(formatted_message)
 
     formatted_messages_str = '\n'.join(formatted_messages)
-    return formatted_messages_str   
+    return formatted_messages_str
 
-@router.get('/bryson/{msg}')
-async def message_bryson(msg: str):
-    result = messaging.msg_bryson(msg)
+async def upload_message(sender, content, phoneNumber):
+    new_message = {'sender': sender, 'content': content, 'time': datetime.utcnow(), 'phoneNumber': phoneNumber}
+    
+    # Insert the new message into the 'message_collection'
+    result = await db.message_collection.insert_one(new_message)
 
-    return result.raw_response.json()
+# @router.get('/bryson/{msg}')
+# async def message_bryson(msg: str):
+#     result = messaging.msg_bryson(msg)
+
+#     return result.raw_response.json()
+
+# Example usage
+async def main():
+    await upload_message("Jason", "I'm good", "2894007386")
+
+# Run the main function
+if __name__ == "__main__":
+    import asyncio
+
+    # Run the asynchronous main function
+    asyncio.run(main())
