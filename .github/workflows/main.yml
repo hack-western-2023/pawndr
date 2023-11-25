@@ -18,26 +18,24 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.8'
+        python-version: '3.9.5'
 
     - name: Install Poetry
       run: |
         pip install poetry
-    
-    - name: Enter Backend
-      run: cd backend
 
     - name: Install dependencies
       run: |
+        cd backend
         poetry install
 
     - name: Create .env file
       run: |
-        echo "INFOBIP_KEY=${{ secrets.INFOBIP_KEY }}" >> .env
-        echo "INFOBIP_URL=${{ secrets.INFOBIP_URL }}" >> .env
-        echo "MONGODB_URI=${{ secrets.MONGODB_URI }}" >> .env
-        echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> .env
-        echo "OPENAI_ENDPOINT=${{ secrets.OPENAI_ENDPOINT }}" >> .env
+        echo "INFOBIP_KEY=${{ secrets.INFOBIP_KEY }}" >> backend/.env
+        echo "INFOBIP_URL=${{ secrets.INFOBIP_URL }}" >> backend/.env
+        echo "MONGODB_URI=${{ secrets.MONGODB_URI }}" >> backend/.env
+        echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> backend/.env
+        echo "OPENAI_ENDPOINT=${{ secrets.OPENAI_ENDPOINT }}" >> backend/.env
 
     - name: Copy files to the server
       uses: appleboy/scp-action@master
