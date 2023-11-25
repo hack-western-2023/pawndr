@@ -4,6 +4,8 @@ from datetime import datetime, timedelta
 
 from backend import messaging
 from backend import db
+from routers import users
+from backend import prompt
 
 router = APIRouter()
 
@@ -60,4 +62,20 @@ async def message_bryson(msg: str):
 async def message_inbox(msg: dict):
     result = msg['results'][0]
 
-    return await upload_message('boondocks', result['text'], result['from'])
+    message = result['text']
+    phoneNumber = result['from']
+
+    sender = users.get_user_by_phone(phoneNumber)
+    sender = sender[0]['name']
+
+    await upload_message(sender, message, phoneNumber)
+    
+    convo = get_messages_today_by_phone(phoneNumber)
+    convo = parse_messages_for_openai(convo)
+    new_message = prompt.gen_next_message_reflect(convo)
+
+    await upload_message('Pawn', new_message, phoneNumber)
+    
+    result = messaging.msg_bryson(new_message)
+    return result
+
