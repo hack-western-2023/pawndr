@@ -54,13 +54,15 @@ jobs:
         ssh-keyscan -H "$SERVER_IP" >> ~/.ssh/known_hosts
         scp -r backend/ $SERVER_USER@$SERVER_IP:/home/omarcodes2/pawndr
 
-    - name: Deploy application
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.SERVER_IP }}
-        username: ${{ secrets.SERVER_USER }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        port: '22'
-        script: |
-          cd /pwndr/backend/backend
-          poetry run uvicorn main:app --host 0.0.0.0 --port 8000
+- name: Deploy application
+  env:
+    SERVER_IP: ${{ secrets.SERVER_IP }}
+    SERVER_USER: ${{ secrets.SERVER_USER }}
+    SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+  run: |
+    ssh -i ~/.ssh/id_rsa $SERVER_USER@$SERVER_IP << 'EOF'
+      cd /home/omarcodes2/pawndr/backend/backend
+      # Any additional commands required for setting up the environment
+      poetry install
+      poetry run uvicorn main:app --host 0.0.0.0 --port 8000
+    EOF
