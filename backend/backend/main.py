@@ -4,6 +4,8 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv()
+import messaging
+
 app = FastAPI()
 
 from fastapi.middleware.cors import CORSMiddleware
@@ -23,7 +25,7 @@ client = AsyncIOMotorClient(mongodb_uri)
 db = client.test
 
 @app.get("/")
-def root():
+async def root():
     return {'message': 'roll stangs'}
 
 @app.get("/users/{user_id}")
