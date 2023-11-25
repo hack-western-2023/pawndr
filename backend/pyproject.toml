@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "backend"
+version = "0.1.0"
+description = ""
+authors = ["Bryson Wu <brysonwu@student.ubc.ca>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10.0"
+motor = "^3.3.2"
+fastapi = {extras = ["all"], version = "^0.104.1"}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
