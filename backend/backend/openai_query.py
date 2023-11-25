@@ -8,7 +8,7 @@ load_dotenv()
 def get_openai_response(query):
   # Set your OpenAI API key
   OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-  OPENAI_ENDPOINT = 'https://api.openai.com/v1/completions'
+  OPENAI_ENDPOINT = os.getenv("OPENAI_ENDPOINT")
 
   headers = {
     'Authorization': f'Bearer {OPENAI_API_KEY}',
@@ -18,20 +18,15 @@ def get_openai_response(query):
   payload = {
     "model": "text-davinci-003",
     "prompt": query,
-    'max_tokens': 1000  # Customize this based on your requirements
+    'max_tokens': 1000,  # Customize this based on your requirements
+    'temperature': 0.8
   }
 
   response = requests.post(OPENAI_ENDPOINT, headers=headers, json=payload)
 
   if response.status_code == 200:
-    print("hello")
     ans = response.json()['choices'][0]['text']
     ans = ans[2:]
     return ans
   else:
     return "Error"
-
-# Example usage
-query = "What is the capital of France?"
-result = get_openai_response(query)
-print(result)
