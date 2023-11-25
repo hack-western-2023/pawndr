@@ -23,15 +23,17 @@ jobs:
     - name: Install Poetry
       run: |
         pip install poetry
-
-    - name: Install dependencies
-      run: |
-        poetry install
     
     - name: Change to backend directory
       run: |
         cd backend
         pwd
+        
+    - name: Install dependencies
+      run: |
+        poetry install
+    
+
 
     - name: Create .env file
       run: |
