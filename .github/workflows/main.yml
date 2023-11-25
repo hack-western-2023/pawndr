@@ -48,6 +48,10 @@ jobs:
         SERVER_USER: ${{ secrets.SERVER_USER }}
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
       run: |
+        mkdir -p ~/.ssh
+        echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan -H "$SERVER_IP" >> ~/.ssh/known_hosts
         ssh -i ~/.ssh/id_rsa $SERVER_USER@$SERVER_IP "pkill -f 'uvicorn main:app'"
         
     - name: Custom SCP to Server
