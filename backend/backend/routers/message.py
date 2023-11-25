@@ -56,6 +56,11 @@ async def upload_message(sender, content, phoneNumber):
 
 #     return result.raw_response.json()
 
+@router.get('/wagwan')
+async def wagwan(msg: str):
+
+    return {'message': 'wagwan'}
+
 # Example usage
 async def main():
     from backend import prompt
