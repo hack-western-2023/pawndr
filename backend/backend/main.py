@@ -1,10 +1,13 @@
 from fastapi import FastAPI
+# from fastapi.responses import JSONResponse
+from fastapi.encoders import jsonable_encoder
 from motor.motor_asyncio import AsyncIOMotorClient
 from dotenv import load_dotenv
 import os
 
-load_dotenv()
 import messaging
+
+load_dotenv()
 
 app = FastAPI()
 
@@ -37,3 +40,10 @@ async def read_user(user_id: str):
         return {"error": "User not found"}
     except Exception as e:
         return {"error": str(e)}
+
+@app.get('/msg/bryson/{msg}')
+async def message_bryson(msg: str):
+    result = messaging.msg_bryson(msg)
+
+    # return JSONResponse(str(result))
+    return result.raw_response.json()
