@@ -24,7 +24,7 @@ async def get_messages_from_day_by_phone(phone_number: str, target_date: datetim
     }
 
     # Retrieve and return all messages matching the criteria
-    cursor = db.message_collection.find(query)
+    cursor = db.message_collection.find(query).sort("time", 1)
     messages = await cursor.to_list(length=None)
     return messages
 
@@ -58,7 +58,13 @@ async def upload_message(sender, content, phoneNumber):
 
 # Example usage
 async def main():
-    await upload_message("Jason", "I'm good", "2894007386")
+    from backend import prompt
+    messages = await get_messages_today_by_phone("2894007386")
+    messages = parse_messages_for_openai(messages)
+    print(messages)
+    new_message = prompt.gen_next_message_reflect(messages)
+    await upload_message("Pawn", new_message, "2894007386")
+    
 
 # Run the main function
 if __name__ == "__main__":
