@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./App.css";
@@ -8,7 +7,7 @@ function App() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://127.0.0.1:8000/");
+      const response = await axios.get(process.env.BACKEND_ENDPOINT);
       setData(response.data);
       //CG generated
     } catch (error) {
