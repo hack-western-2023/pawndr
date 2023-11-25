@@ -41,7 +41,15 @@ jobs:
         echo "MONGODB_URI=${{ secrets.MONGODB_URI }}" >> .env
         echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> .env
         echo "OPENAI_ENDPOINT=${{ secrets.OPENAI_ENDPOINT }}" >> .env
-
+    
+    - name: Stop existing application
+      env:
+        SERVER_IP: ${{ secrets.SERVER_IP }}
+        SERVER_USER: ${{ secrets.SERVER_USER }}
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      run: |
+        ssh -i ~/.ssh/id_rsa $SERVER_USER@$SERVER_IP "pkill -f 'uvicorn main:app'"
+        
     - name: Custom SCP to Server
       env:
         SERVER_IP: ${{ secrets.SERVER_IP }}
@@ -55,6 +63,19 @@ jobs:
         scp -r backend/ $SERVER_USER@$SERVER_IP:/home/omarcodes2/pawndr
 
     - name: Deploy application
+      env:
+        SERVER_IP: ${{ secrets.SERVER_IP }}
+        SERVER_USER: ${{ secrets.SERVER_USER }}
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      run: |
+        ssh -i ~/.ssh/id_rsa $SERVER_USER@$SERVER_IP << 'EOF'
+          cd /home/omarcodes2/pawndr/backend/backend
+          # Any additional commands required for setting up the environment
+          poetry install
+          nohup poetry run uvicorn main:app --host 0.0.0.0 --port 8000 &> /dev/null &
+        EOF
+
+    - name: Start application
       env:
         SERVER_IP: ${{ secrets.SERVER_IP }}
         SERVER_USER: ${{ secrets.SERVER_USER }}
