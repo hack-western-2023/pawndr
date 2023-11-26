@@ -10,6 +10,19 @@ const Home = () => {
 
     const journal = 'journal entry here'
 
+    const handleDateClick = (value, event) => {
+        const formattedDate = value.toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          timeZoneName: 'short',
+        });
+        console.log('Selected date:', formattedDate);
+    }
+
     return (
     <div
     style={{
@@ -40,7 +53,10 @@ const Home = () => {
             <span className='journal'>{journal}</span>
         </div>
         <img className='plant' src={plant}/>
-        {/* <Calendar /> */}
+        <Calendar
+          className="calendar-container"
+          onClickDay={handleDateClick}
+        />
         </div>
     </div>
 );
