@@ -162,17 +162,21 @@
     background-color: #fff; /* White background color */
     width: 40%;
     min-width: 200px;
-    min-height: 430px;
+    min-height: 400px;
+    max-height: 400px;
     position: absolute;
     top: 150px;
     left: 150px;
     border-radius: 10px; /* Adjust the border-radius for rounded corners */
     padding: 40px; /* Optional: Add padding for content spacing */
     padding-top: 80px;
+    padding-bottom: 80px;
     z-index: 1;
     display: flex;
     align-items: flex-start;
-    justify-content: justify;
+    justify-content: flex-start;
+    overflow: auto;
+    overflow-y: scroll;
 }
 
 .journal {
@@ -182,6 +186,42 @@
     display: block;
     z-index: 3;
 }
+
+/* Add these styles to your existing CSS */
+
+.journalentries {
+    background-color: #fff; /* White background color */
+    width: 45%;
+    min-width: 400px;
+    min-height: 500px;
+    position: relative;
+    top: 150px;
+    left: 150px;
+    border-radius: 10px; /* Adjust the border-radius for rounded corners */
+    padding: 10px; /* Optional: Add padding for content spacing */
+    z-index: 1;
+    display: flex;
+    flex-direction: column; /* Align items in a column */
+}
+
+.journal-container {
+    flex: 1; /* Allow containers to grow and take available space */
+}
+
+.analysis-container {
+    padding-top: 80px;
+}
+
+.analysis,
+.journal {
+    font-family: Inter;
+    color: #000000;
+    white-space: pre-wrap;
+    display: block;
+    z-index: 3;
+    padding: 20px; /* Adjust the padding for both analysis and journal */
+}
+
 
 
 .underlined {
