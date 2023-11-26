@@ -12,6 +12,12 @@
     left: 150px;
 }
 
+.wrapper {
+    width: calc(100% - 340px); /* Adjust the width as needed */
+    /* Other existing styles */
+}
+
+.react-calendar {
   .wrapper {
     width: calc(100% - 340px); /* Adjust the width as needed */
     /* Other existing styles */
