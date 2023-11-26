@@ -4,6 +4,8 @@ from datetime import datetime, timedelta
 
 from backend import messaging
 from backend import db
+from backend.routers import users
+from backend import prompt
 
 router = APIRouter()
 
@@ -44,8 +46,8 @@ def parse_messages_for_openai(messages):
     formatted_messages_str = '\n'.join(formatted_messages)
     return formatted_messages_str
 
-async def upload_message(sender, content, phoneNumber):
-    new_message = {'sender': sender, 'content': content, 'time': datetime.utcnow(), 'phoneNumber': phoneNumber}
+async def upload_message(id, sender, content, phoneNumber):
+    new_message = {'id': id, 'sender': sender, 'content': content, 'time': datetime.utcnow(), 'phoneNumber': phoneNumber}
     
     # Insert the new message into the 'message_collection'
     result = await db.message_collection.insert_one(new_message)
@@ -58,6 +60,25 @@ async def message_bryson(msg: str):
 
 @router.post('/inbox')
 async def message_inbox(msg: dict):
-    result = msg['results'][0]
+    phoneNumber = msg['results'][0]['from']
+    message = msg['results'][0]['message']['text']
+    _id = msg['results'][0]['messageId']
 
-    return await upload_message('boondocks', result['text'], result['from'])
+    sender = await users.get_user_by_phone(phoneNumber)
+    sender = sender['name']
+
+    await upload_message(_id, sender, message, phoneNumber)
+    
+    if await db.message_collection.find_one({'_id': _id}):
+        pass
+    else:
+        convo = await get_messages_today_by_phone(phoneNumber)
+        convo = parse_messages_for_openai(convo)
+        new_message = prompt.gen_next_message_reflect(convo)
+
+        await upload_message(_id + 'pawn', 'Pawn', new_message, phoneNumber)
+        
+        # result = messaging.msg_bryson(new_message)
+        result = messaging.whatsapp_bryson(new_message)
+        return result.raw_response.json()
+
