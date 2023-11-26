@@ -1,19 +1,40 @@
 import React from 'react';
+import { useState } from 'react';
 import { useUser } from '../UserContext';
 import './home.css';
 import home from '../assets/home.svg';
 import Calendar from 'react-calendar';
 import cat from '../assets/cat.svg';
 import plant from '../assets/plant.svg';
+import axios from 'axios';
 
 const Home = () => {
+    const [selectedDate, setSelectedDate] = useState(null);
+    const [responseContent, setResponseContent] = useState(null);
+
     const { user } = useUser(); // Using useUser to get the user data
     const name = user.name || 'User';
+    const phoneNumber = user.phoneNumber;
 
     const journal = 'journal goes here';
     const analysis = 'analysis here';
 
-    const handleDateClick = (value, event) => {
+    const handleDateClick = async (value, event) => {
+        const formattedDate = value.toISOString(); // ISO format
+
+        try {
+            // Make a POST request to your API
+            const response = await axios.post('localhost:8000/message/' + phoneNumber, {
+                date: formattedDate,
+            });
+
+            // Update state with the response content
+            setResponseContent(response.chat);
+
+        } catch (error) {
+            console.error('Error making API request:', error);
+        }
+        /*
         const formattedDate = value.toLocaleDateString('en-US', {
             year: 'numeric',
             month: '2-digit',
@@ -24,6 +45,7 @@ const Home = () => {
             timeZoneName: 'short',
         });
         console.log('Selected date:', formattedDate);
+        */
     };
 
     return (
@@ -57,13 +79,16 @@ const Home = () => {
                         <span className='analysis'>{analysis}</span>
                     </div>
                     <div className='journal-container' style={{ marginTop: '50px' }}>
-                        <span className='journal'>{journal}</span>
+                        <span className='journal'>{responseContent}</span>
                     </div>
                 </div>
                 <img className='plant' src={plant}/>
                 <Calendar
                     className="calendar-container"
-                    onClickDay={handleDateClick}
+                    onClickDay={(value, event) => {
+                        handleDateClick(value, event);
+                        setSelectedDate(value);
+                    }}
                 />
             </div>
         </div>
