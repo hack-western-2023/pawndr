@@ -89,4 +89,5 @@ class dateInput(BaseModel):
 @router.post('/{phoneNumber}')
 async def return_chat_log(phoneNumber:str, date_input: dateInput):
     chat = await get_messages_from_day_by_phone(phoneNumber, date_input.date)
+    chat = parse_messages_for_openai(chat)
     return {'chat': chat}
