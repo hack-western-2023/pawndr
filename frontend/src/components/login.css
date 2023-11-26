@@ -12,6 +12,31 @@
     font-size: 14px;
 }
 
+@keyframes rotateAnimation {
+    0% {
+      transform: rotate(0deg);
+      transform-origin: bottom center;
+    }
+    100% {
+      transform: rotate(90deg);
+      transform-origin: bottom center;
+    }
+  }
+
+.plant2 {
+    position: absolute;
+    top: 110px;
+    right: 200px;
+    animation: rotateAnimation 3s forwards;
+    animation-delay: 1s;
+}
+
+.cat2 {
+    position: absolute;
+    top: 180px;
+    right: 300px;
+}
+
 .create:hover {
     color: #56516f;
 }

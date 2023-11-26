@@ -12,6 +12,32 @@
     left: 150px;
 }
 
+.glow-background {
+    color: var(--dark-3, #3C4356);
+    font-family: Inter;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    position: absolute;
+    top: 61px;
+    left: 150px;
+    animation: glow-background 3s linear infinite; /* Adjust the duration as needed */
+}
+
+@keyframes glow-background {
+    0% {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Initial glow */
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(255, 255, 255, 1); /* Maximum glow */
+    }
+    100% {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Final glow */
+    }
+}
+
+
 .wrapper {
     width: calc(100% - 340px); /* Adjust the width as needed */
     /* Other existing styles */
@@ -51,11 +77,21 @@
 
 .react-calendar {
     font-family: 'Inter', sans-serif; /* Use the Inter font or your preferred font */
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
 }
 
 .react-calendar__tile--now {
     background: #847BAA; /* Set the active date color */
     color: #DFDCEF !important; /* Set the text color */
+    border-radius: 10px;
+}
+
+.react-calendar__tile--now:hover {
+    background: #DFDCEF; /* Set the active date color */
+    color: #847BAA !important; /* Set the text color */
     border-radius: 10px;
 }
 
@@ -120,11 +156,33 @@
     z-index: 2;
 }
 
+/* home.css */
+
+.journalentries {
+    background-color: #fff; /* White background color */
+    width: 40%;
+    min-width: 200px;
+    min-height: 430px;
+    position: absolute;
+    top: 150px;
+    left: 150px;
+    border-radius: 10px; /* Adjust the border-radius for rounded corners */
+    padding: 40px; /* Optional: Add padding for content spacing */
+    padding-top: 80px;
+    z-index: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: justify;
+}
+
 .journal {
     font-family: Inter;
+    color: #000000;
     white-space: pre-wrap;
     display: block;
+    z-index: 3;
 }
+
 
 .underlined {
     text-decoration: underline;
