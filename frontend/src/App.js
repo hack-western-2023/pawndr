@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./App.css";
 import Login from "./components/login";
-import CreateAccount from "./components/createaccount";
-import Home from "./components/home";
+// import CreateAccount from "./components/createaccount";
+// import Home from "./components/home";
 
 function App() {
   const [data, setData] = useState(null);
