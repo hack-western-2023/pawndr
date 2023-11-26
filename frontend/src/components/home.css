@@ -42,6 +42,43 @@
     z-index: 1; /* Set a z-index value higher than the default (e.g., 1) */
   }
 
+.calendar-container {
+    position: absolute;
+    top: 150px;
+    right: 150px;
+    border-radius: 10px;
+}
+
+.react-calendar {
+    font-family: 'Inter', sans-serif; /* Use the Inter font or your preferred font */
+}
+
+.react-calendar__tile--now {
+    background: #847BAA; /* Set the active date color */
+    color: #DFDCEF !important; /* Set the text color */
+    border-radius: 10px;
+}
+
+.react-calendar__tile--active {
+    background: #7EC1D0 !important; /* Set the active date color */
+    color: #000000 !important; /* Set the text color */
+    border-radius: 10px;
+}
+
+.react-calendar__tile--active:hover {
+    background: #847BAA; /* Set the active date color */
+    color: #000000 !important; /* Set the text color */
+    border-radius: 10px;
+}
+
+.react-calendar__tile:hover {
+    border-radius: 10px;
+}
+
+.react-calendar__month-view__days__day--weekend {
+    color: #707070;
+  }
+
 .journalentries {
     background-color: #fff; /* White background color */
     width: 45%;
