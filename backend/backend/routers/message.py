@@ -87,7 +87,7 @@ async def message_inbox(msg: dict):
         await upload_message(_id + 'pawn', 'Pawn', new_message, phoneNumber)
         
         # result = messaging.msg_bryson(new_message)
-        result = messaging.whatsapp_bryson(new_message)
+        result = messaging.whatsapp_bryson(phoneNumber, new_message)
         return result.raw_response.json()
 
 
