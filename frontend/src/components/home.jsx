@@ -47,7 +47,7 @@ const Home = () => {
             <div className="container">
                 <div className="glow-background pawndr">Pawndr</div>
                 <div className='sayhello'>
-                    Hi there <span className="underlined">{name}</span>!
+                    Hi there, <span className="underlined">{name}!</span>  <a href='/login' className="underlinedsmall">Logout</a>
                 </div>
                 <img className='cat' src={cat}/>
                 <div className='journalentries'>
