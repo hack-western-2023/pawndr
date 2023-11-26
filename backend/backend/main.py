@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from routers import message, users
+from routers import message, users, sentiment
 
 app = FastAPI()
 
@@ -16,6 +16,7 @@ app.add_middleware(
 
 app.include_router(message.router, prefix='/message')
 app.include_router(users.router, prefix='/users')
+app.include_router(sentiment.router, prefix='/sentiment')
 
 @app.get("/")
 async def root():

@@ -11,6 +11,8 @@ import axios from 'axios';
 const Home = () => {
     const [selectedDate, setSelectedDate] = useState(null);
     const [responseContent, setResponseContent] = useState(null);
+    const [sentiment, setSentiment] = useState(null);
+    const [summary, setSummary] = useState(null);
 
     const { user } = useUser(); // Using useUser to get the user data
     const name = user.name || 'User';
@@ -32,6 +34,19 @@ const Home = () => {
                 .catch(error => {
                     console.error('Error:', error);
                     setResponseContent("")
+                });
+
+            axios.post(`${process.env.REACT_APP_BACKEND_ENDPOINT}/sentiment/${phoneNumber}`, {date: formattedDate})
+                .then(response => {
+                    console.log(response.data);
+                    // Process the response data here
+                    setSentiment(response.data.sentiment)
+                    setSummary(response.data.summary)
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    setSentiment("")
+                    setSummary("")
                 });
 
 
@@ -80,7 +95,7 @@ const Home = () => {
                 <img className='cat' src={cat}/>
                 <div className='journalentries'>
                     <div className='analysis-container'>
-                        <span className='analysis'>{analysis}</span>
+                        <span className='analysis'>{sentiment + summary}</span>
                     </div>
                     <div className='journal-container' style={{ marginTop: '50px' }}>
                         <span className='journal'>{responseContent}</span>

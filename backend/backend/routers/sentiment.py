@@ -1,6 +1,8 @@
+from fastapi import APIRouter
 from pydantic import BaseModel
 from datetime import datetime, timedelta
 
+router = APIRouter()
 from backend import db
 
 class SentimentSummary(BaseModel):
@@ -31,16 +33,27 @@ async def get_sentiment_from_day_by_phone(phone_number: str, target_date: dateti
   sentiment = await cursor.to_list(length=None)
   return sentiment
 
-# Example usage
-async def main():
-  await upload_sentiment("sad", "today was bare sad innit", "2894007386")
-  messages = await get_sentiment_from_day_by_phone("2894007386", datetime.utcnow())
-  print(messages)
+class dateInput(BaseModel):
+    date:datetime
+
+@router.post('/{phoneNumber}')
+async def return_sentiment(phoneNumber:str, date_input: dateInput):
+  entire = await get_sentiment_from_day_by_phone(phoneNumber, date_input.date)
+  for i in entire:
+    summary = i['summary']
+    sentiment = i['sentiment']
+  return {'summary': summary, 'sentiment': sentiment}
+
+# # Example usage
+# async def main():
+#   await upload_sentiment("sad", "today was bare sad innit", "2894007386")
+#   messages = await get_sentiment_from_day_by_phone("2894007386", datetime.utcnow())
+#   print(messages)
     
 
-# Run the main function
-if __name__ == "__main__":
-    import asyncio
+# # Run the main function
+# if __name__ == "__main__":
+#     import asyncio
 
-    # Run the asynchronous main function
-    asyncio.run(main())
+#     # Run the asynchronous main function
+#     asyncio.run(main())
