@@ -1,13 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import "./login.css";
 import loginpage from '../assets/loginpage.svg';
 import logoLight from '../assets/logoLight.svg';
 import { useNavigate } from 'react-router-dom';
+import plant2 from '../assets/plant2.svg';
+import cat2 from '../assets/cat2.svg';
+import catsilly from '../assets/catsilly.svg';
 
 const Login = ({ onLogin }) => {
     const [credentials, setCredentials] = useState({ phoneNumber: '', password: '' });
+    const [catPosition, setCatPosition] = useState(-100); // Initial position (off-screen)
+    const [catImage, setCatImage] = useState(cat2); // Initial image source
     const navigate = useNavigate();
+
+    useEffect(() => {
+        // Move the cat forward smoothly on every load
+        setCatPosition(0);
+
+        // Change the cat image to catsilly after 2 seconds
+        const timeoutId = setTimeout(() => {
+            setCatImage(catsilly);
+        }, 1000);
+
+        // Clean up the timeout when the component unmounts
+        return () => {
+            clearTimeout(timeoutId);
+        };
+    }, []);
 
     const handleChange = (e) => {
         setCredentials({ ...credentials, [e.target.name]: e.target.value });
@@ -40,10 +60,20 @@ const Login = ({ onLogin }) => {
             backgroundAttachment: 'fixed',
             overflow: 'hidden'
         }}>
-        <div className='container'>
+            <div className='container'>
                 <img className='logo' src={logoLight}/>
                 <div className='title'>Hello! Welcome to Pawndr</div>
                 <div className='logintitle'>Please log in:</div>
+                <img className='plant2' src={plant2}/>
+                <img
+                    className='cat2'
+                    src={catImage}
+                    alt="Cat Image"
+                    style={{
+                        transform: `translateX(${catPosition}px)`,
+                        transition: 'transform 1s ease-in-out',
+                    }}
+                />
             </div>
             <div className='inputs'>
                 <input
