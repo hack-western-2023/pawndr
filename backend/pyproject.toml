@@ -17,6 +17,7 @@ fastapi = "^0.104.1"
 uvicorn = {extras = ["standard"], version = "^0.24.0.post1"}
 bcrypt = "^4.0.1"
 datetime = "^5.3"
+pydub = "^0.25.1"
 
 [build-system]
 requires = ["poetry-core"]
