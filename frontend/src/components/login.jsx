@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useUser } from '../UserContext';
+import { useNavigate } from 'react-router-dom';
 import "./login.css";
 import loginpage from '../assets/loginpage.svg';
 import logoLight from '../assets/logoLight.svg';
-import { useNavigate } from 'react-router-dom';
 import plant2 from '../assets/plant2.svg';
 import cat2 from '../assets/cat2.svg';
 import catsilly from '../assets/catsilly.svg';
 
 const Login = ({ onLogin }) => {
+    const { setUser } = useUser(); // Using useUser to set the user data
     const [credentials, setCredentials] = useState({ phoneNumber: '', password: '' });
     const [catPosition, setCatPosition] = useState(-100); // Initial position (off-screen)
     const [catImage, setCatImage] = useState(cat2); // Initial image source
@@ -36,9 +38,11 @@ const Login = ({ onLogin }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(`${process.env.REACT_APP_BACKEND_ENDPOINT}/users/login`, credentials);
-            if (response.data.message === "Login successful") {
-                onLogin(true);  // Set isAuthenticated to true
+            const loginResponse = await axios.post(`${process.env.REACT_APP_BACKEND_ENDPOINT}/users/login`, credentials);
+            if (loginResponse.data.message === "Login successful") {
+                const nameResponse = await axios.get(`${process.env.REACT_APP_BACKEND_ENDPOINT}/users/${credentials.phoneNumber}`);
+                setUser({ phoneNumber: credentials.phoneNumber, name: nameResponse.data }); // Set user data in context
+                onLogin(true); // Set isAuthenticated to true
                 navigate('/home');
             } else {
                 // Handle login failure (e.g., show error message)

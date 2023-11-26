@@ -1,4 +1,5 @@
 import React from 'react';
+import { useUser } from '../UserContext';
 import './home.css';
 import home from '../assets/home.svg';
 import Calendar from 'react-calendar';
@@ -6,7 +7,8 @@ import cat from '../assets/cat.svg';
 import plant from '../assets/plant.svg';
 
 const Home = () => {
-    const name = 'meowmeow';
+    const { user } = useUser(); // Using useUser to get the user data
+    const name = user.name || 'User';
 
     const journal = 'journal goes here';
     const analysis = 'analysis here';
