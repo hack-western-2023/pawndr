@@ -28,10 +28,10 @@ const Login = ({ onLogin }) => {
             // Handle error (e.g., show error message)
         }
     };
-    
+
     return (
         <div style={{ 
-            backgroundImage: 'url(${loginpage})', 
+            backgroundImage: `url(${loginpage})`, 
             backgroundSize: 'cover', 
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',

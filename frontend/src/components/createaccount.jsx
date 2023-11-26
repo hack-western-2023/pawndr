@@ -44,8 +44,6 @@ const CreateAccount = () => {
             backgroundAttachment: 'fixed',
             overflow: 'hidden'
         }}>
-
-            }}>
             <div className='container'>
                 <img className='logo' src={logoLight}/>
                 <div className='title'>So happy you're joining Pawndr!</div>
