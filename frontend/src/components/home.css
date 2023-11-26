@@ -187,17 +187,21 @@
 }
 
 .analysis-container {
-    padding-top: 50px;
+    padding: 30px;
+    flex: 1;
 }
-
 
 .analysis {
     font-family: Inter;
+    background-color: #DFDCEF;
     color: #000000;
     white-space: pre-wrap;
     display: block;
+    border-radius: 10px;
     z-index: 3;
-    padding: 20px; /* Adjust the padding for both analysis and journal */
+    margin-bottom: 10px;
+    padding: 30px; /* Adjust the padding for both analysis and journal */
+    
 }
 
 .journal {
