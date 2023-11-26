@@ -1,7 +1,8 @@
 from fastapi import APIRouter
 from pydantic import BaseModel
 from datetime import datetime, timedelta
-from backend import prompt, message
+from backend import prompt
+from backend.routers import message 
 
 router = APIRouter()
 from backend import db
