@@ -26,7 +26,7 @@ const CreateAccount = () => {
             console.log(process.env.BACKEND_ENDPOINT);
             const response = await axios.post(`${process.env.REACT_APP_BACKEND_ENDPOINT}/users/signup`, userDetails);
             if (response.data.message === "User created successfully") {
-                navigate('/login');
+                navigate('/');
             }
         } catch (error) {
             console.error("Signup error", error);

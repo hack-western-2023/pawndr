@@ -94,7 +94,7 @@ const Login = ({ onLogin }) => {
                 />
             </div>
             <button className='loginButton' onClick={handleSubmit}>Login</button>
-            <a className='create' href='/'>Create Account</a>
+            <a className='create' href='/createaccount'>Create Account</a>
         </div>
     );
 }
