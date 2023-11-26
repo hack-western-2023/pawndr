@@ -70,7 +70,7 @@ async def message_inbox(msg: dict):
 
     await upload_message(sender, message, phoneNumber)
     
-    convo = get_messages_today_by_phone(phoneNumber)
+    convo = await get_messages_today_by_phone(phoneNumber)
     convo = parse_messages_for_openai(convo)
     new_message = prompt.gen_next_message_reflect(convo)
 
