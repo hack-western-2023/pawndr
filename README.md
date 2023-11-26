@@ -1,4 +1,4 @@
-![Cat Paw](https://seeklogo.com/images/P/paw-paw-logo-9611469C33-seeklogo.com.png) # Pawndr
+# Pawndr
 
 ## Transform Your Daily Thoughts Into a Journey of Self-Discovery
 
