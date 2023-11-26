@@ -17,12 +17,11 @@
     /* Other existing styles */
 }
 
-.react-calendar {
-  .wrapper {
+.wrapper {
     width: calc(100% - 340px); /* Adjust the width as needed */
     /* Other existing styles */
-  }
-  
+}
+
 .sayhello {
     position: absolute;
     top: 61px;

@@ -33,13 +33,6 @@ const CreateAccount = () => {
         }
     };
 
-
-const CreateAccount = () => {
-
-    const handleLoginClick = () => {
-        window.location.href = '/';
-      };
-
     return (
         <div style={{ 
             backgroundImage: `url(${createbackground})`, 
