@@ -41,10 +41,13 @@ class dateInput(BaseModel):
 @router.post('/{phoneNumber}')
 async def return_sentiment(phoneNumber:str, date_input: dateInput):
   chat = await message.get_messages_from_day_by_phone(phoneNumber, date_input.date)
-  chat = message.parse_messages_for_openai(chat)
-  summary = prompt.gen_summary(chat)
-  sentiment = prompt.gen_sentiment_analysis(chat)
-  return {'summary': summary, 'sentiment': sentiment}
+  if chat:
+    chat = message.parse_messages_for_openai(chat)
+    summary = prompt.gen_summary(chat)
+    sentiment = prompt.gen_sentiment_analysis(chat)
+    return {'summary': summary, 'sentiment': sentiment}
+  else:
+    return{'summary': "no journal entry", 'sentiment': "no journal entry"}
 
 # # Example usage
 # async def main():
