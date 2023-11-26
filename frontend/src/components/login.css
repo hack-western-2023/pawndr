@@ -60,6 +60,15 @@
     left: 126px;
 }
 
+.logo {
+    position: absolute;
+    top: 40px; 
+    right: 50px; 
+    width: 50%;
+    max-width: 150px; 
+    height: auto; 
+  }
+
 .loginButton:hover {
     background-color: #847BAA;
     color: #DFDCEF; 

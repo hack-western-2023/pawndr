@@ -12,18 +12,82 @@
     left: 150px;
 }
 
+.sayhello {
+    position: absolute;
+    top: 61px;
+    right: 90px;
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    background-color: transparent;
+    color: #DFDCEF;
+}
+
+.journalentries {
+    background-color: #fff; /* White background color */
+    width: 70%; /* Set a percentage value for responsiveness */
+    min-width: 200px; /* Set a minimum width for shorter text */
+    border-radius: 10px; /* Adjust the border-radius for rounded corners */
+    padding: 10px; /* Optional: Add padding for content spacing */
+    position: relative; /* Ensure proper positioning */
+    z-index: 1; /* Set a z-index value higher than the default (e.g., 1) */
+  }
+
+.journalentries {
+    background-color: #fff; /* White background color */
+    width: 45%;
+    min-width: 200px;
+    min-height: 500px;
+    position: relative;
+    top: 150px;
+    left: 150px;
+    border-radius: 10px; /* Adjust the border-radius for rounded corners */
+    padding: 10px; /* Optional: Add padding for content spacing */
+    z-index: 1;
+}
+
+@keyframes tilt {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(5deg); 
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+
+.cat {
+    position: absolute;
+    top: 110px;
+    left: 120px;
+    animation: tilt 3s infinite;
+    z-index: 2;
+}
+
+.plant {
+    position: absolute;
+    top: 500px;
+    left: 770px;
+    animation: tilt 3s infinite;
+    z-index: 2;
+}
+
+.journal {
+    font-family: Inter;
+    white-space: pre-wrap;
+    display: block;
+}
+
+.underlined {
+    text-decoration: underline;
+}
+
 .wrapper {
-    width: calc(100% - 340px); /* Adjust the width as needed */
-    /* Other existing styles */
+    width: calc(100% - 340px); 
 }
 
 .react-calendar {
-  .wrapper {
-    width: calc(100% - 340px); /* Adjust the width as needed */
-    /* Other existing styles */
-  }
-
-  .react-calendar {
     border-radius: 10px 10px 0 0; /* Adjust the value to your desired radius */
     overflow: hidden; /* Ensure content within the calendar doesn't overflow */
     font-family: 'Inter', sans-serif;
@@ -31,39 +95,37 @@
     padding-left: 10px;
     padding-right: 10px;
     padding-bottom: 10px;
-  }
-  
-  .react-calendar__month-view__days__day--weekend {
+}
+
+.react-calendar__month-view__days__day--weekend {
     color: #3C4356 !important; /* Use !important to ensure your style takes precedence */
-  }
-  
-  /* Styles for the navigation arrows */
-  .react-calendar__navigation {
+}
+
+.react-calendar__navigation {
     font-size: 20px; /* Increase the font size of navigation arrows */
-  }
-  
-  /* Styles for the month label */
-  .react-calendar__month-view__month {
+}
+
+.react-calendar__month-view__month {
     font-size: 18px; /* Increase the font size of the month label */
-  }
-  
+}
+
 
 .react-calendar__tile {
     background-color: #fff;
     width: 350px; /* Set width and height to make it a square */
     height: 50px;
-  }
-  
-  .react-calendar__tile--active:hover {
-    background-color: #DFDCEF !important; /* Use !important to ensure your style takes precedence */
-  }
+}
 
-  .react-calendar__tile--active {
+.react-calendar__tile--active:hover {
+    background-color: #DFDCEF !important; /* Use !important to ensure your style takes precedence */
+}
+
+.react-calendar__tile--active {
     background-color: #DFDCEF !important; /* Use !important to ensure your style takes precedence */
     color: #3C4356; /* Set text color for better visibility on the grey background */
-  }
-  
+}
+
 .react-calendar__tile--now {
     /* Your custom styles for the current date */
     background-color: #847BAA;
-  }
+}
