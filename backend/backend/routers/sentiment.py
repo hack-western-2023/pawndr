@@ -47,7 +47,7 @@ async def return_sentiment(phoneNumber:str, date_input: dateInput):
     sentiment = prompt.gen_sentiment_analysis(chat)
     return {'summary': summary, 'sentiment': sentiment}
   else:
-    return{'summary': "no journal entry", 'sentiment': "no journal entry"}
+    return{'summary': "", 'sentiment': "No journal entry for this day :("}
 
 # # Example usage
 # async def main():
