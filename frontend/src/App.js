@@ -4,6 +4,7 @@ import CreateAccount from './components/createaccount';
 import Login from './components/login';
 import Home from './components/home';
 import { UserProvider } from './UserContext';
+import Welcome from './components/welcomepage';
 
 
 function App() {
@@ -21,9 +22,10 @@ function App() {
     <UserProvider>
       <Router>
         <Routes>
-          <Route path="/" element={<CreateAccount />} />
-          <Route path="/login" element={<Login onLogin={handleLogin} />} />
+          <Route path="/" element={<Login onLogin={handleLogin} />} />
+          <Route path="/createaccount" element={<CreateAccount />} />
           <Route path="/home" element={isAuthenticated ? <Home onLogout={handleLogout} /> : <Navigate to="/login" />} />
+          <Route path="/welcome" element={<Welcome />} />
         </Routes>
       </Router>
     </UserProvider>
