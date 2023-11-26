@@ -58,16 +58,6 @@
     color: #DFDCEF;
 }
 
-.journalentries {
-    background-color: #fff; /* White background color */
-    width: 70%; /* Set a percentage value for responsiveness */
-    min-width: 200px; /* Set a minimum width for shorter text */
-    border-radius: 10px; /* Adjust the border-radius for rounded corners */
-    padding: 10px; /* Optional: Add padding for content spacing */
-    position: relative; /* Ensure proper positioning */
-    z-index: 1; /* Set a z-index value higher than the default (e.g., 1) */
-  }
-
 .calendar-container {
     position: absolute;
     top: 150px;
@@ -114,19 +104,6 @@
 .react-calendar__month-view__days__day--weekend {
     color: #707070;
   }
-
-.journalentries {
-    background-color: #fff; /* White background color */
-    width: 45%;
-    min-width: 200px;
-    min-height: 500px;
-    position: relative;
-    top: 150px;
-    left: 150px;
-    border-radius: 10px; /* Adjust the border-radius for rounded corners */
-    padding: 10px; /* Optional: Add padding for content spacing */
-    z-index: 1;
-}
 
 @keyframes tilt {
     0% {
@@ -209,7 +186,7 @@
 }
 
 .analysis-container {
-    padding-top: 80px;
+    padding-top: 50px;
 }
 
 .analysis,
@@ -225,7 +202,12 @@
 
 
 .underlined {
+    color: #3C4356;
+}
+
+.underlinedsmall {
     text-decoration: underline;
+    font-size: 15px;
 }
 
 .wrapper {
