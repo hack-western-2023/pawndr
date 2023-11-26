@@ -28,7 +28,7 @@ async def read_user(phone_number: str):
     try:
         user = await get_user_by_phone(phone_number)
         if user:
-            return user
+            return user['name']
         return {"error": "User not found"}
     except Exception as e:
         return {"error": str(e)}
