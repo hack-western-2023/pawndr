@@ -1,0 +1,65 @@
+.pawn {
+    position: absolute;
+    top: 400px;
+    right: 300px;
+    transform: scale(2) !important;
+    animation: rotatePawn 3s infinite alternate;
+}
+
+@keyframes rotatePawn {
+    from {
+        transform: rotate(-10deg); /* Starting rotation angle */
+    }
+    to {
+        transform: rotate(10deg); /* Ending rotation angle */
+    }
+}
+
+.homeButton {
+    padding: 10px 30px; 
+    background-color: #DFDCEF; 
+    color: #3A364C;
+    font-family: 'Inter', sans-serif;
+    border: none;
+    border-radius: 6px; 
+    cursor: pointer;
+    font-size: 16px; 
+    margin-top: 20px; 
+    transition: background-color 0.3s ease; 
+    position: absolute;
+    top: 380px;
+    left: 126px;
+}
+
+.homeButton:hover {
+    background-color: #847BAA;
+    color: #DFDCEF; 
+}
+
+.welcomeText {
+    color: #3A364C;
+    font-family: 'Inter', sans-serif;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    align-items: flex-start;
+    position: absolute;
+    gap: 72px;
+    left: 126px;
+    top: 200px;
+}
+
+.startText {
+    color: #3A364C;
+    font-family: 'Inter', sans-serif;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    align-items: flex-start;
+    position: absolute;
+    gap: 72px;
+    left: 126px;
+    top: 300px;
+}

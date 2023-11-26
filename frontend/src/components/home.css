@@ -1,3 +1,5 @@
+@import 'react-calendar/dist/Calendar.css';
+
 .pawndr {
     color: var(--dark-3, #3C4356);
     font-family: Inter;
@@ -10,16 +12,204 @@
     left: 150px;
 }
 
-.card-container {
-    width: 18rem;
-    background-color: #F8F9FA;
-    color: #212529;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    top: 100px;
+.glow-background {
+    color: var(--dark-3, #3C4356);
+    font-family: Inter;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    position: absolute;
+    top: 61px;
     left: 150px;
+    animation: glow-background 3s linear infinite; /* Adjust the duration as needed */
+}
+
+@keyframes glow-background {
+    0% {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Initial glow */
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(255, 255, 255, 1); /* Maximum glow */
+    }
+    100% {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Final glow */
+    }
+}
+
+
+.wrapper {
+    width: calc(100% - 340px); /* Adjust the width as needed */
+    /* Other existing styles */
+}
+
+.wrapper {
+    width: calc(100% - 340px); /* Adjust the width as needed */
+    /* Other existing styles */
+}
+
+.sayhello {
+    position: absolute;
+    top: 61px;
+    right: 90px;
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    background-color: transparent;
+    color: #DFDCEF;
+}
+
+.calendar-container {
+    position: absolute;
+    top: 150px;
+    right: 150px;
+    border-radius: 10px;
+}
+
+.react-calendar {
+    font-family: 'Inter', sans-serif; /* Use the Inter font or your preferred font */
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+
+.react-calendar__tile--now {
+    background: #847BAA; /* Set the active date color */
+    color: #DFDCEF !important; /* Set the text color */
+    border-radius: 10px;
+}
+
+.react-calendar__tile--now:hover {
+    background: #DFDCEF; /* Set the active date color */
+    color: #847BAA !important; /* Set the text color */
+    border-radius: 10px;
+}
+
+.react-calendar__tile--active {
+    background: #7EC1D0 !important; /* Set the active date color */
+    color: #000000 !important; /* Set the text color */
+    border-radius: 10px;
+}
+
+.react-calendar__tile--active:hover {
+    background: #847BAA; /* Set the active date color */
+    color: #000000 !important; /* Set the text color */
+    border-radius: 10px;
+}
+
+.react-calendar__tile:hover {
+    border-radius: 10px;
+}
+
+.react-calendar__month-view__days__day--weekend {
+    color: #707070;
   }
-  
-  .card-title {
-    color: #007BFF;
+
+@keyframes tilt {
+    0% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(5deg); 
+    }
+    100% {
+      transform: rotate(0deg);
+    }
   }
+
+.cat {
+    position: absolute;
+    top: 110px;
+    left: 120px;
+    animation: tilt 3s infinite;
+    z-index: 2;
+}
+
+.plant {
+    position: absolute;
+    top: 500px;
+    left: 770px;
+    animation: tilt 3s infinite;
+    z-index: 2;
+}
+
+/* home.css */
+
+.journalentries {
+    background-color: #fff; /* White background color */
+    width: 40%;
+    min-width: 200px;
+    min-height: 400px;
+    max-height: 400px;
+    position: absolute;
+    top: 150px;
+    left: 150px;
+    border-radius: 10px; /* Adjust the border-radius for rounded corners */
+    padding: 40px; /* Optional: Add padding for content spacing */
+    padding-top: 80px;
+    padding-bottom: 80px;
+    z-index: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    overflow: auto;
+    overflow-y: scroll;
+}
+
+.journal {
+    font-family: Inter;
+    color: #000000;
+    white-space: pre-wrap;
+    display: block;
+    z-index: 3;
+}
+
+/* Add these styles to your existing CSS */
+
+.journalentries {
+    background-color: #fff; /* White background color */
+    width: 45%;
+    min-width: 400px;
+    min-height: 500px;
+    position: relative;
+    top: 150px;
+    left: 150px;
+    border-radius: 10px; /* Adjust the border-radius for rounded corners */
+    padding: 10px; /* Optional: Add padding for content spacing */
+    z-index: 1;
+    display: flex;
+    flex-direction: column; /* Align items in a column */
+}
+
+.journal-container {
+    flex: 1; /* Allow containers to grow and take available space */
+}
+
+.analysis-container {
+    padding-top: 50px;
+}
+
+.analysis,
+.journal {
+    font-family: Inter;
+    color: #000000;
+    white-space: pre-wrap;
+    display: block;
+    z-index: 3;
+    padding: 20px; /* Adjust the padding for both analysis and journal */
+}
+
+
+
+.underlined {
+    color: #3C4356;
+}
+
+.underlinedsmall {
+    text-decoration: underline;
+    font-size: 15px;
+}
+
+.wrapper {
+    width: calc(100% - 340px); 
+}

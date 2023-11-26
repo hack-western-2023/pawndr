@@ -1,32 +1,34 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import "./App.css";
-//import Login from "./components/login";
-import CreateAccount from "./components/createaccount";
-//import Home from "./components/home";
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import CreateAccount from './components/createaccount';
+import Login from './components/login';
+import Home from './components/home';
+import Welcome from './components/welcomepage';
+import { UserProvider } from './UserContext';
+
 
 function App() {
-  const [data, setData] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.get(process.env.BACKEND_ENDPOINT);
-      setData(response.data);
-      //CG generated
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
+  const handleLogin = (loggedIn) => {
+    setIsAuthenticated(loggedIn);
   };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+  };
 
   return (
-    <div className="App">
-      <CreateAccount />
-      {data ? <p>Data: {JSON.stringify(data)}</p> : <p></p>}
-    </div>
+    <UserProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Login onLogin={handleLogin} />} />
+          <Route path="/createaccount" element={<CreateAccount />} />
+          <Route path="/home" element={isAuthenticated ? <Home onLogout={handleLogout} /> : <Navigate to="/" />} />
+          <Route path="/welcome" element={<Welcome />} />
+        </Routes>
+      </Router>
+    </UserProvider>
   );
 }
 

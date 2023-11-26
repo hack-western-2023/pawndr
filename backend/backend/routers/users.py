@@ -6,18 +6,19 @@ from backend import db
 router = APIRouter()
 
 class User(BaseModel):
-    gender: str
     password: str
     phoneNumber: str
     name: str
-    pronouns: str
-    preferredTimeOfDay: str
 
 class LoginRequest(BaseModel):
     phoneNumber: str
     password: str
 
 async def add_user(user: User):
+    existing_user = await get_user_by_phone(user.phoneNumber)
+    if existing_user:
+        raise ValueError("Phone number already exists")
+    
     await db.user_collection.insert_one(user.dict())
 
 async def get_user_by_phone(phone_number: str):
@@ -28,7 +29,7 @@ async def read_user(phone_number: str):
     try:
         user = await get_user_by_phone(phone_number)
         if user:
-            return user
+            return user['name']
         return {"error": "User not found"}
     except Exception as e:
         return {"error": str(e)}

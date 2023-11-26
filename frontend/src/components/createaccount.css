@@ -3,6 +3,15 @@
 
 }
 
+.logo {
+    position: absolute;
+    top: 40px;
+    right: 50px;
+    width: 50%; 
+    max-width: 150px; 
+    height: auto; 
+}
+
 @keyframes zenBounce {
     0%, 20%, 50%, 80%, 100% {
       transform: translateY(0);
@@ -84,8 +93,15 @@
     top: 410px;
 }
 
+.phoneInput:focus,
+.nameInput:focus,
+.passwordInput:focus {
+    border-color: #847BAA; /* Change border color when focused */
+    box-shadow: 0 0 30px rgb(196, 196, 196)/* Add a subtle box shadow for the glow effect */
+}
 
-.loginButton {
+
+.registerButton {
     padding: 10px 30px; 
     background-color: #DFDCEF; 
     color: #3A364C;
@@ -101,7 +117,7 @@
     left: 126px;
 }
 
-.loginButton:hover {
+.registerButton:hover {
     background-color: #847BAA;
     color: #DFDCEF; 
 }
