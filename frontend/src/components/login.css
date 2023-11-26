@@ -3,6 +3,19 @@
 
 }
 
+.create {
+    position: absolute;
+    top: 440px;
+    left: 260px;
+    color: #3A364C;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+}
+
+.create:hover {
+    color: #56516f;
+}
+
 @keyframes zenBounce {
     0%, 20%, 50%, 80%, 100% {
       transform: translateY(0);
@@ -13,7 +26,7 @@
     60% {
       transform: translateY(-5px);
     }
-  }
+}
 
 .title {
     color: #3A364C;
@@ -29,9 +42,30 @@
     top: 110px;
     animation: zenBounce 4s infinite ease-in-out;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-  }
+}
 
-  .logintitle {
+.loginButton {
+    padding: 10px 30px; 
+    background-color: #DFDCEF; 
+    color: #3A364C;
+    font-family: 'Inter', sans-serif;
+    border: none;
+    border-radius: 6px; 
+    cursor: pointer;
+    font-size: 16px; 
+    margin-top: 20px; 
+    transition: background-color 0.3s ease; 
+    position: absolute;
+    top: 410px;
+    left: 126px;
+}
+
+.loginButton:hover {
+    background-color: #847BAA;
+    color: #DFDCEF; 
+}
+
+.logintitle {
     color: #3A364C;
     font-family: 'Inter', sans-serif;
     font-size: 30px;
@@ -43,4 +77,31 @@
     gap: 72px;
     left: 126px;
     top: 200px;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
   }
+  
+.loginphoneInput {
+    width: 350px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    position: absolute;
+    left: 126px;
+    top: 290px;
+}
+
+.loginpasswordInput {
+    width: 350px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    position: absolute;
+    left: 126px;
+    top: 350px;
+}

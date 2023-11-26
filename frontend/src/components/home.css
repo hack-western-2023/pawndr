@@ -1,0 +1,70 @@
+@import 'react-calendar/dist/Calendar.css';
+
+.pawndr {
+    color: var(--dark-3, #3C4356);
+    font-family: Inter;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    position: absolute;
+    top: 61px;
+    left: 150px;
+}
+
+.wrapper {
+    width: calc(100% - 340px); /* Adjust the width as needed */
+    /* Other existing styles */
+}
+
+.react-calendar {
+  .wrapper {
+    width: calc(100% - 340px); /* Adjust the width as needed */
+    /* Other existing styles */
+  }
+
+  .react-calendar {
+    border-radius: 10px 10px 0 0; /* Adjust the value to your desired radius */
+    overflow: hidden; /* Ensure content within the calendar doesn't overflow */
+    font-family: 'Inter', sans-serif;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+  }
+  
+  .react-calendar__month-view__days__day--weekend {
+    color: #3C4356 !important; /* Use !important to ensure your style takes precedence */
+  }
+  
+  /* Styles for the navigation arrows */
+  .react-calendar__navigation {
+    font-size: 20px; /* Increase the font size of navigation arrows */
+  }
+  
+  /* Styles for the month label */
+  .react-calendar__month-view__month {
+    font-size: 18px; /* Increase the font size of the month label */
+  }
+  
+
+.react-calendar__tile {
+    background-color: #fff;
+    width: 350px; /* Set width and height to make it a square */
+    height: 50px;
+  }
+  
+  .react-calendar__tile--active:hover {
+    background-color: #DFDCEF !important; /* Use !important to ensure your style takes precedence */
+  }
+
+  .react-calendar__tile--active {
+    background-color: #DFDCEF !important; /* Use !important to ensure your style takes precedence */
+    color: #3C4356; /* Set text color for better visibility on the grey background */
+  }
+  
+.react-calendar__tile--now {
+    /* Your custom styles for the current date */
+    background-color: #847BAA;
+  }
+}

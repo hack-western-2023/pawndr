@@ -1,0 +1,94 @@
+name: Deploy to Google Cloud
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'backend/**'
+      - '.github/workflows/backend-deploy.yml'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+
+    - name: Install Poetry
+      run: |
+        pip install poetry
+    
+        
+    - name: Install dependencies
+      run: |
+        cd backend
+        poetry install
+    
+
+
+    - name: Create .env file
+      run: |
+        cd backend
+        echo "INFOBIP_KEY=${{ secrets.INFOBIP_KEY }}" >> .env
+        echo "INFOBIP_URL=${{ secrets.INFOBIP_URL }}" >> .env
+        echo "MONGODB_URI=${{ secrets.MONGODB_URI }}" >> .env
+        echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> .env
+        echo "OPENAI_ENDPOINT=${{ secrets.OPENAI_ENDPOINT }}" >> .env
+    
+    - name: Stop existing application
+      env:
+        SERVER_IP: ${{ secrets.SERVER_IP }}
+        SERVER_USER: ${{ secrets.SERVER_USER }}
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      run: |
+        mkdir -p ~/.ssh
+        echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan -H "$SERVER_IP" >> ~/.ssh/known_hosts
+        ssh -i ~/.ssh/id_rsa $SERVER_USER@$SERVER_IP "pkill -f 'uvicorn main:app'"
+        
+    - name: Custom SCP to Server
+      env:
+        SERVER_IP: ${{ secrets.SERVER_IP }}
+        SERVER_USER: ${{ secrets.SERVER_USER }}
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      run: |
+        mkdir -p ~/.ssh
+        echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan -H "$SERVER_IP" >> ~/.ssh/known_hosts
+        scp -r backend/ $SERVER_USER@$SERVER_IP:/home/omarcodes2/pawndr
+
+    - name: Deploy application
+      env:
+        SERVER_IP: ${{ secrets.SERVER_IP }}
+        SERVER_USER: ${{ secrets.SERVER_USER }}
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      run: |
+        ssh -i ~/.ssh/id_rsa $SERVER_USER@$SERVER_IP << 'EOF'
+          cd /home/omarcodes2/pawndr/backend/backend
+          # Any additional commands required for setting up the environment
+          poetry install
+          nohup poetry run uvicorn main:app --host 0.0.0.0 --port 8000 &> /dev/null &
+        EOF
+
+    - name: Start application
+      env:
+        SERVER_IP: ${{ secrets.SERVER_IP }}
+        SERVER_USER: ${{ secrets.SERVER_USER }}
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      run: |
+        ssh -i ~/.ssh/id_rsa $SERVER_USER@$SERVER_IP << 'EOF'
+          cd /home/omarcodes2/pawndr/backend/backend
+          # Any additional commands required for setting up the environment
+          poetry install
+          nohup poetry run uvicorn main:app --host 0.0.0.0 --port 8000 &> /dev/null &
+        EOF
+

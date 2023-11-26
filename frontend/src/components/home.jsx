@@ -1,32 +1,36 @@
 import React from 'react';
-import "./home.css";
-import home from '../assets/home.png';
-import cat from '../assets/cat.png';
-import plant from '../assets/plant.png';
+import './home.css';
+import home from '../assets/home.svg';
+import Calendar from 'react-calendar';
 
-const CreateAccount = () => {
+
+const Home = () => {
     return (
-        <div style={{ 
-            backgroundImage: `url(${home})`, 
-            backgroundSize: 'cover', 
+    <div
+    style={{
+        position: 'relative',
+        width: '100vw',
+        height: '100vh',
+        overflow: 'hidden',
+    }}
+    >
+        <div
+        style={{
+            backgroundImage: `url(${home})`,
+            backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
-            width: '100vw',
-            height: '100vh',
-            backgroundAttachment: 'fixed',
-            overflow: 'hidden'
-          }}>
-            <div className='container'>
-                <div className='pawndr'>Pawndr</div>
-                <div className='leftdiv'>Create your account:</div>
-            </div>
-            <div className='inputs'>
-
-            </div>
-
+            width: '100%',
+            height: '100%',
+            position: 'absolute',
+        }}
+        />
+        <div className="container">
+        <div className="pawndr">Pawndr</div>
+        <Calendar />
         </div>
-    )
-
+    </div>
+);
 }
 
-export default CreateAccount
+export default Home;
