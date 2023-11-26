@@ -23,7 +23,7 @@ function App() {
 
   return (
     <div className="App">
-      <Home />
+      <CreateAccount />
       {data ? <p>Data: {JSON.stringify(data)}</p> : <p></p>}
     </div>
   );
