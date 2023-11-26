@@ -2,13 +2,14 @@ import React from 'react';
 import "./login.css";
 import loginpage from '../assets/loginpage.svg'
 import logoLight from '../assets/logoLight.svg';
+import { Link } from 'react-router-dom';
 
 
 const Login = () => {
 
     const handleLoginClick = () => {
         window.location.href = '/';
-      };
+    };
 
     return (
         <div style={{ 
@@ -40,8 +41,8 @@ const Login = () => {
             />
             </div>
             <button className='loginButton' onClick={handleLoginClick} >Login</button>
-
-        </div>
+            <a className='create' href='/createaccount'>Create Account</a>
+            </div>
     )
 }
 

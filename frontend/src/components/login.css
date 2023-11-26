@@ -3,6 +3,19 @@
 
 }
 
+.create {
+    position: absolute;
+    top: 440px;
+    left: 260px;
+    color: #3A364C;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+}
+
+.create:hover {
+    color: #56516f;
+}
+
 @keyframes zenBounce {
     0%, 20%, 50%, 80%, 100% {
       transform: translateY(0);
