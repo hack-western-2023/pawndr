@@ -12,12 +12,12 @@
     left: 150px;
 }
 
-  .wrapper {
+.wrapper {
     width: calc(100% - 340px); /* Adjust the width as needed */
     /* Other existing styles */
-  }
+}
 
-  .react-calendar {
+.react-calendar {
     border-radius: 10px 10px 0 0; /* Adjust the value to your desired radius */
     overflow: hidden; /* Ensure content within the calendar doesn't overflow */
     font-family: 'Inter', sans-serif;
