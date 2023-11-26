@@ -60,8 +60,16 @@ async def message_bryson(msg: str):
 
 @router.post('/inbox')
 async def message_inbox(msg: dict):
+    print(msg)
+
+    msg_type = msg['results'][0]['message']['type']
+
+    if msg_type == 'AUDIO':
+        message = messaging.transcribe_audio(msg)
+    else:
+        message = msg['results'][0]['message']['text']
+
     phoneNumber = msg['results'][0]['from']
-    message = msg['results'][0]['message']['text']
     _id = msg['results'][0]['messageId']
 
     sender = await users.get_user_by_phone(phoneNumber)
@@ -79,7 +87,7 @@ async def message_inbox(msg: dict):
         await upload_message(_id + 'pawn', 'Pawn', new_message, phoneNumber)
         
         # result = messaging.msg_bryson(new_message)
-        result = messaging.whatsapp_bryson(new_message)
+        result = messaging.whatsapp_bryson(phoneNumber, new_message)
         return result.raw_response.json()
 
 
