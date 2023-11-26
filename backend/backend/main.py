@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from routers import message, users, sentiment
+from backend.routers import message, users, sentiment
 
 app = FastAPI()
 

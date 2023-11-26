@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useUser } from '../UserContext';
 import './home.css';
 import home from '../assets/home.svg';
@@ -9,31 +9,26 @@ import { useState } from 'react';
 import axios from 'axios';
 
 const Home = () => {
-    const [selectedDate, setSelectedDate] = useState(null);
+    const [selectedDate, setSelectedDate] = useState(new Date()); // Set initial date to the current date
     const [responseContent, setResponseContent] = useState(null);
     const [sentiment, setSentiment] = useState(null);
     const [summary, setSummary] = useState(null);
 
-    const { user } = useUser(); // Using useUser to get the user data
+    const { user } = useUser();
     const name = user.name || 'User';
     const phoneNumber = user.phoneNumber;
 
-    const journal = 'journal goes here';
-    const analysis = 'analysis here';
-
     const handleDateClick = async (value, event) => {
-        const formattedDate = value.toISOString(); // ISO format
+        const formattedDate = value.toISOString();
         try {
-            // Make a POST request to your API
-            axios.post(`${process.env.REACT_APP_BACKEND_ENDPOINT}/message/${phoneNumber}`, {date: formattedDate})
+            axios.post(`${process.env.REACT_APP_BACKEND_ENDPOINT}/message/${phoneNumber}`, { date: formattedDate })
                 .then(response => {
                     console.log(response.data);
-                    // Process the response data here
-                    setResponseContent(response.data.chat)
+                    setResponseContent(response.data.chat);
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                    setResponseContent("")
+                    setResponseContent("");
                 });
 
             axios.post(`${process.env.REACT_APP_BACKEND_ENDPOINT}/sentiment/${phoneNumber}`, {date: formattedDate})
@@ -53,19 +48,24 @@ const Home = () => {
         } catch (error) {
             console.error('Error making API request:', error);
         }
-        /*
-        const formattedDate = value.toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: '2-digit',
-            day: '2-digit',
-            hour: '2-digit',
-            minute: '2-digit',
-            second: '2-digit',
-            timeZoneName: 'short',
-        });
-        console.log('Selected date:', formattedDate);
-        */
     };
+
+    useEffect(() => {
+        const formattedDate = selectedDate.toISOString();
+        try {
+            axios.post(`${process.env.REACT_APP_BACKEND_ENDPOINT}/message/${phoneNumber}`, { date: formattedDate })
+                .then(response => {
+                    console.log(response.data);
+                    setResponseContent(response.data.chat);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    setResponseContent("");
+                });
+        } catch (error) {
+            console.error('Error making API request:', error);
+        }
+    }, [selectedDate]);
 
     return (
         <div
