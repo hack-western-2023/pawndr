@@ -31,14 +31,14 @@ jobs:
         cd frontend
         npm run build
 
-    - name: Copy build to server
-      env:
-        SERVER_IP: ${{ secrets.SERVER_IP }}
-        SERVER_USER: ${{ secrets.SERVER_USER }}
-        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-      run: |
-        mkdir -p ~/.ssh
-        echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan -H "$SERVER_IP" >> ~/.ssh/known_hosts
-        scp -r frontend/build/ $SERVER_USER@$SERVER_IP:/home/omarcodes2/pawndr/frontend
+    # - name: Copy build to server
+    #   env:
+    #     SERVER_IP: ${{ secrets.SERVER_IP }}
+    #     SERVER_USER: ${{ secrets.SERVER_USER }}
+    #     SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+    #   run: |
+    #     mkdir -p ~/.ssh
+    #     echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+    #     chmod 600 ~/.ssh/id_rsa
+    #     ssh-keyscan -H "$SERVER_IP" >> ~/.ssh/known_hosts
+    #     scp -r frontend/build/ $SERVER_USER@$SERVER_IP:/home/omarcodes2/pawndr/frontend
