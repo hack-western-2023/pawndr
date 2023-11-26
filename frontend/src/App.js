@@ -1,10 +1,9 @@
-// App.js
-
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import CreateAccount from './components/createaccount';
 import Login from './components/login';
 import Home from './components/home';
+
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);

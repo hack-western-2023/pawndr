@@ -29,9 +29,20 @@ const Login = ({ onLogin }) => {
         }
     };
 
+import loginpage from '../assets/loginpage.svg'
+import logoLight from '../assets/logoLight.svg';
+import { Link } from 'react-router-dom';
+
+
+const Login = () => {
+
+    const handleLoginClick = () => {
+        window.location.href = '/';
+    };
+
     return (
         <div style={{ 
-            backgroundImage: `url(${loginpage})`, 
+            backgroundImage: 'url(${loginpage})', 
             backgroundSize: 'cover', 
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
@@ -40,7 +51,7 @@ const Login = ({ onLogin }) => {
             backgroundAttachment: 'fixed',
             overflow: 'hidden'
         }}>
-            <div className='container'>
+        <div className='container'>
                 <img className='logo' src={logoLight}/>
                 <div className='title'>Hello! Welcome to Pawndr</div>
                 <div className='logintitle'>Please log in:</div>

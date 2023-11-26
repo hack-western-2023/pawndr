@@ -33,6 +33,13 @@ const CreateAccount = () => {
         }
     };
 
+
+const CreateAccount = () => {
+
+    const handleLoginClick = () => {
+        window.location.href = '/';
+      };
+
     return (
         <div style={{ 
             backgroundImage: `url(${createbackground})`, 
@@ -44,12 +51,15 @@ const CreateAccount = () => {
             backgroundAttachment: 'fixed',
             overflow: 'hidden'
         }}>
+
+            }}>
             <div className='container'>
                 <img className='logo' src={logoLight}/>
                 <div className='title'>So happy you're joining Pawndr!</div>
                 <div className='createtitle'>Create your account:</div>
             </div>
             <div className='inputs'>
+
                 <input
                     type='text'
                     placeholder='Name'
@@ -76,6 +86,7 @@ const CreateAccount = () => {
                 />
             </div>
             <button className='registerButton' onClick={handleSubmit}>Create Account</button>
+
         </div>
     )
 }
