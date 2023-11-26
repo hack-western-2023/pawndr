@@ -6,4 +6,5 @@ async def clear_cluster():
   result = await db.message_collection.delete_many({})
   return result
 
-asyncio.run(clear_cluster())
+if __name__ == '__main__':
+  asyncio.run(clear_cluster())
