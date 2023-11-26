@@ -6,12 +6,9 @@ from backend import db
 router = APIRouter()
 
 class User(BaseModel):
-    gender: str
     password: str
     phoneNumber: str
     name: str
-    pronouns: str
-    preferredTimeOfDay: str
 
 class LoginRequest(BaseModel):
     phoneNumber: str
