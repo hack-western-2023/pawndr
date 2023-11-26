@@ -183,14 +183,15 @@
 
 .journal-container {
     flex: 1; /* Allow containers to grow and take available space */
+    padding: 30px;
 }
 
 .analysis-container {
     padding-top: 50px;
 }
 
-.analysis,
-.journal {
+
+.analysis {
     font-family: Inter;
     color: #000000;
     white-space: pre-wrap;
@@ -199,7 +200,13 @@
     padding: 20px; /* Adjust the padding for both analysis and journal */
 }
 
-
+.journal {
+    background-color: #DFDCEF; /* Set the background color for responses */
+    color: #000000; /* Set the text color for responses */
+    padding: 30px;
+    margin-bottom: 10px; /* Adjust margin as needed for spacing between messages */
+    border-radius: 10px;
+}
 
 .underlined {
     color: #3C4356;

@@ -83,7 +83,10 @@ const Home = () => {
                         <span className='analysis'>{analysis}</span>
                     </div>
                     <div className='journal-container' style={{ marginTop: '50px' }}>
-                        <span className='journal'>{responseContent}</span>
+                    <h1 style={{ fontFamily: 'Inter, sans-serif', color: '#3C4356', fontSize: '25px' }}>Your Journal Entry:</h1>
+                    {responseContent && (
+                            <span className='journal'>{responseContent}</span>
+                        )}
                     </div>
                 </div>
                 <img className='plant' src={plant}/>
