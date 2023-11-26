@@ -14,6 +14,11 @@ body, html {
   padding: 0;
 }
 
+.h1 {
+  font-family: Inter;
+  color:#3C4356;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
