@@ -114,3 +114,9 @@
     left: 126px;
     top: 350px;
 }
+
+.loginphoneInput:focus,
+.loginpasswordInput:focus {
+    border-color: #847BAA; /* Change border color when focused */
+    box-shadow: 0 0 30px rgb(196, 196, 196)/* Add a subtle box shadow for the glow effect */
+}

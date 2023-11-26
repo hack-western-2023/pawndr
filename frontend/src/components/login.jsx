@@ -28,18 +28,7 @@ const Login = ({ onLogin }) => {
             // Handle error (e.g., show error message)
         }
     };
-
-import loginpage from '../assets/loginpage.svg'
-import logoLight from '../assets/logoLight.svg';
-import { Link } from 'react-router-dom';
-
-
-const Login = () => {
-
-    const handleLoginClick = () => {
-        window.location.href = '/';
-    };
-
+    
     return (
         <div style={{ 
             backgroundImage: 'url(${loginpage})', 
