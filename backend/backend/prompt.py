@@ -9,7 +9,7 @@ def gen_first_message():
   return response
 
 def gen_next_message_reflect(context):
-  prompt = 'given this conversation:\n' + context + "\n provide just the next response or question in a singular line to further them to reflect on their day."
+  prompt = 'given this conversation:\n' + context + "\n provide just the next response or question in a singular line to further them to reflect on their day. Whatever response you give, do not use the word Pawn"
   response = o.get_openai_response(prompt + response_personality)
   response = response.replace("\n", "")
   return response
