@@ -79,10 +79,10 @@ const Home = () => {
                 </div>
                 <img className='cat' src={cat}/>
                 <div className='journalentries'>
-                    <div className='analysis-container'>
-                    <h1 style={{ fontFamily: 'Inter, sans-serif', color: '#3C4356', fontSize: '25px' }}>Summary:</h1>
+                    {/* <div className='analysis-container'>
+                    <h1 style={{ fontFamily: 'Inter, sans-serif', color: '#3C4356', fontSize: '25px' }}>Today, it seemed like you were feeling:</h1>
                         <span className='analysis'>{analysis}</span>
-                    </div>
+                    </div> */}
                     <div className='journal-container' style={{ marginTop: '50px' }}>
                     <h1 style={{ fontFamily: 'Inter, sans-serif', color: '#3C4356', fontSize: '25px' }}>Your Journal Entry:</h1>
                     {responseContent && (
