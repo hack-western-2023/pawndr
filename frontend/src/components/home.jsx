@@ -65,7 +65,13 @@ const Home = () => {
         } catch (error) {
             console.error('Error making API request:', error);
         }
-    }, [selectedDate]);
+    }, [selectedDate, phoneNumber]);
+
+    useEffect(() => {
+        const today = new Date();
+        setSelectedDate(today);
+        handleDateClick(today); // Fetch data for today's date
+    }, []);
 
     return (
         <div
@@ -88,7 +94,7 @@ const Home = () => {
                 }}
             />
             <div className="container">
-                <div clas sName="glow-background pawndr">Pawndr</div>
+                <div className="glow-background">Pawndr</div>
                 <div className='sayhello'>
                     Hi there, <span className="underlined">{name}!</span>  <a href='/' className="underlinedsmall">Logout</a>
                 </div>
@@ -96,7 +102,8 @@ const Home = () => {
                 <div className='journalentries'>
                     <div className='analysis-container'>
                     <h1 style={{ fontFamily: 'Inter, sans-serif', color: '#3C4356', fontSize: '25px' }}>Summary:</h1>
-                        <span className='analysis'>{sentiment + summary}</span>
+                        <span className='sentiment'>From your conversation with Pawn, you sounded... {sentiment}</span>
+                        <span className='analysis'>{summary}</span>
                     </div>
                     <div className='journal-container' style={{ marginTop: '50px' }}>
                     <h1 style={{ fontFamily: 'Inter, sans-serif', color: '#3C4356', fontSize: '25px' }}>Your Journal Entry:</h1>
