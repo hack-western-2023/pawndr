@@ -1,6 +1,7 @@
 from backend import openai_query as o
 
-response_personality = " your message should be as if you are a friend named Pawn, but you are just listening, and should be phrased as a question"
+# response_personality = " If I say goodbye, TTYL, or something similar, say goodbye back and stop. Otherwise, your message should be as if you are my friend named Pawn, but you are only listening and your responses should be phrased as a question. Never mention your own name in your responses."
+response_personality = " If I say 'goodbye', 'see ya', or something similar, say goodbye back. You must not offer additional thoughts if I do this. Otherwise, your message should be as if you are my friend named Pawn, but you are actively listening. Never mention your own name in your responses."
 
 def gen_first_message():
   prompt = 'generate a message to a user to ask about their day as if you are their friend, keep it to a singular question, and the response should just be similar to hello, hows your day, or hows it going, or what\'s up.'
