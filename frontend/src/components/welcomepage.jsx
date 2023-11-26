@@ -5,9 +5,10 @@ import cat from '../assets/cat.svg';
 import plant from '../assets/plant.svg';
 import { useUser } from '../UserContext';
 import pawn from '../assets/pawn.svg';
+import { Link } from 'react-router-dom';
 
 const Welcome = () => {
-    const { user } = useUser(); // Using useUser to get the user data
+    const { user } = useUser();
     const name = user.name || 'User';
 
     return (
@@ -41,6 +42,9 @@ const Welcome = () => {
                 <div className='startText'>
                     To start, please text us on WhatsApp at +1 249-663-8103
                 </div>
+                <Link to="/home">
+                    <button className='homeButton'>Home</button>
+                    </Link>
             </div>
         </div>
     );

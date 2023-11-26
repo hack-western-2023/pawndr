@@ -15,6 +15,27 @@
     }
 }
 
+.homeButton {
+    padding: 10px 30px; 
+    background-color: #DFDCEF; 
+    color: #3A364C;
+    font-family: 'Inter', sans-serif;
+    border: none;
+    border-radius: 6px; 
+    cursor: pointer;
+    font-size: 16px; 
+    margin-top: 20px; 
+    transition: background-color 0.3s ease; 
+    position: absolute;
+    top: 380px;
+    left: 126px;
+}
+
+.homeButton:hover {
+    background-color: #847BAA;
+    color: #DFDCEF; 
+}
+
 .welcomeText {
     color: #3A364C;
     font-family: 'Inter', sans-serif;
