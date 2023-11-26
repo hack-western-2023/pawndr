@@ -1,11 +1,11 @@
 import React from 'react';
 import "./login.css";
-import loginpage from '../assets/loginpage.png'
+import loginpage from '../assets/loginpage.svg'
+import logoLight from '../assets/logoLight.svg';
 
 
 const Login = () => {
 
-    // route to home
     const handleLoginClick = () => {
         window.location.href = '/';
       };
@@ -23,6 +23,7 @@ const Login = () => {
             }}>
             
             <div className='container'>
+                <img className='logo' src={logoLight}/>
                 <div className='title'>Hello! Welcome to Pawndr</div>
                 <div className='logintitle'>Please log in:</div>
             </div>
@@ -30,12 +31,12 @@ const Login = () => {
             <input
             type='text'
             placeholder='Phone Number'
-            className='phoneInput'
+            className='loginphoneInput'
             />
             <input
             type='password'
             placeholder='Password'
-            className='passwordInput'
+            className='loginpasswordInput'
             />
             </div>
             <button className='loginButton' onClick={handleLoginClick} >Login</button>

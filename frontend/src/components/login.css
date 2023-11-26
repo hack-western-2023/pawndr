@@ -73,7 +73,7 @@
     margin-top: 20px;
   }
   
-.phoneInput {
+.loginphoneInput {
     width: 350px;
     padding: 10px;
     border: 1px solid #ccc;
@@ -83,7 +83,7 @@
     top: 290px;
 }
 
-.passwordInput {
+.loginpasswordInput {
     width: 350px;
     padding: 10px;
     border: 1px solid #ccc;
