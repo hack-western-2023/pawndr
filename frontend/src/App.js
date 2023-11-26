@@ -5,7 +5,6 @@ import Login from './components/login';
 import Home from './components/home';
 import Welcome from './components/welcomepage';
 import { UserProvider } from './UserContext';
-import Welcome from './components/welcomepage';
 
 
 function App() {
