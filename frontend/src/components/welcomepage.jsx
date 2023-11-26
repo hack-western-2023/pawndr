@@ -3,10 +3,12 @@ import './welcomepage.css';
 import home from '../assets/home.svg';
 import cat from '../assets/cat.svg';
 import plant from '../assets/plant.svg';
+import { useUser } from '../UserContext';
 import pawn from '../assets/pawn.svg';
 
 const Welcome = () => {
-    const name = 'meowmeow';
+    const { user } = useUser(); // Using useUser to get the user data
+    const name = user.name || 'User';
 
     return (
         <div
@@ -29,7 +31,6 @@ const Welcome = () => {
                 }}
             />
             <div className="container">
-            <div className="glow-background pawndr">Pawndr</div>
                 <div className='sayhello'>
                     Hi there, <span className="underlined">{name}!</span>  <a href='/' className="underlinedsmall">Logout</a>
                 </div>
@@ -38,7 +39,7 @@ const Welcome = () => {
                     Welcome! Pawn is excited to meet you.
                 </div>
                 <div className='startText'>
-                    To start, please text 
+                    To start, please text us on WhatsApp at +1 249-663-8103
                 </div>
             </div>
         </div>
