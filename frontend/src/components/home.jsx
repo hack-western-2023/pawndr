@@ -88,7 +88,7 @@ const Home = () => {
                 }}
             />
             <div className="container">
-                <div className="glow-background pawndr">Pawndr</div>
+                <div clas sName="glow-background pawndr">Pawndr</div>
                 <div className='sayhello'>
                     Hi there, <span className="underlined">{name}!</span>  <a href='/' className="underlinedsmall">Logout</a>
                 </div>
