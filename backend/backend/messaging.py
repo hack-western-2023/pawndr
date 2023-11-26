@@ -49,7 +49,7 @@ def msg_bryson(msg: str):
     # See the delivery reports.
     return(delivery_reports)
 
-def whatsapp_bryson(msg: str):
+def whatsapp_bryson(recipient:str, msg: str):
     c = WhatsAppChannel.from_auth_params({
         "base_url": BASE_URL,
         "api_key": API_KEY
@@ -58,7 +58,7 @@ def whatsapp_bryson(msg: str):
     response = c.send_text_message(
     {
       "from": SENDER,
-      "to": RECIPIENT,
+      "to": recipient,
       "content": {
         "text": f"{msg}"
       },
