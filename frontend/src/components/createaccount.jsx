@@ -77,6 +77,7 @@ const CreateAccount = () => {
                 />
             </div>
             <button className='registerButton' onClick={handleSubmit}>Create Account</button>
+            <a className='create2' href='/'>Login Instead</a>
 
         </div>
     )
