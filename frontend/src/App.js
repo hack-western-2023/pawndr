@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import CreateAccount from './components/createaccount';
 import Login from './components/login';
 import Home from './components/home';
-import Welcome from './components/welcomepage';
 import { UserProvider } from './UserContext';
+import Welcome from './components/welcomepage';
 
 
 function App() {
