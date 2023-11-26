@@ -1,6 +1,8 @@
 import React from 'react';
 import "./createaccount.css";
-import createbackground from '../assets/createbackground.png'
+import createbackground from '../assets/createbackground.svg';
+import logoLight from '../assets/logoLight.svg';
+
 
 const CreateAccount = () => {
 
@@ -20,7 +22,8 @@ const CreateAccount = () => {
             overflow: 'hidden'
             }}>
             <div className='container'>
-                <div className='title'>So happy you're joining us!</div>
+                <img className='logo' src={logoLight}/>
+                <div className='title'>So happy you're joining Pawndr!</div>
                 <div className='createtitle'>Create your account:</div>
             </div>
             <div className='inputs'>
@@ -40,7 +43,7 @@ const CreateAccount = () => {
             className='passwordInput'
             />
             </div>
-            <button className='loginButton' onClick={handleLoginClick} >Create Account</button>
+            <button className='registerButton' onClick={handleLoginClick} >Create Account</button>
 
         </div>
     )
