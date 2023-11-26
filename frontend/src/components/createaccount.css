@@ -121,3 +121,16 @@
     background-color: #847BAA;
     color: #DFDCEF; 
 }
+
+.create2 {
+    position: absolute;
+    top: 510px;
+    left: 350px;
+    color: #3A364C;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+}
+
+.create2:hover {
+    color: #56516f;
+}
