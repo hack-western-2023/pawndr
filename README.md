@@ -67,29 +67,9 @@ Our journey taught us about cloud deployment, interfacing with various communica
 
 We're looking to expand our platform to include more channels like Messenger, WeChat, and others. Additionally, we aim to enhance our app with comprehensive sentiment analysis and mood trend visualization.
 
-## Screenshots
-
-[Include screenshots of your app here]
-
-## Contributing
-
-We welcome contributions! If you're interested in improving Pawndr, please fork the repository and submit a pull request.
-
 ## Contact
 
-- **[Your Name]** - Developer - [Email](mailto:your.email@example.com)
-- **[Team Member 2's Name]** - Developer - [Email](mailto:their.email@example.com)
-- **[Team Member 3's Name]** - Developer - [Email](mailto:another.email@example.com)
-- **[Team Member 4's Name]** - Developer - [Email](mailto:another.email@example.com)
-
-## License
-
-MIT License
-
-Copyright (c) [year] [copyright holder]
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY
+- **Bryson Wu** - Developer - [Email](mailto:brysonwu@student.ubc.ca)
+- **Omar Bakr** - Developer - [Email](mailto:1bakromar@gmail.com)
+- **Jason Tang** - Developer - [Email](mailto:shuaihangtang@gmail.com)
+- **Kitty Liu** - Designer & Developer - [Email](mailto:kittyliu113@gmail.com)
