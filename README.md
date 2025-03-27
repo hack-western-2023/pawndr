@@ -6,6 +6,13 @@ Pawndr is an innovative SMS journaling app designed to make self-reflection simp
 
 Checkout our devpost: https://devpost.com/software/pawndr-kvlmgj
 
+### Screenshots
+![gallery (3)](https://github.com/user-attachments/assets/c7fa1c82-447e-41f0-97d1-e525109e6eb7)
+![image](https://github.com/user-attachments/assets/ffc1cda5-c2ef-46a6-a05e-61b3578f2c90)
+![image](https://github.com/user-attachments/assets/edd6a03a-6581-4473-a252-cbd4c325139d)
+
+
+
 ### Features
 - **Conversational Prompts:** Receive daily SMS prompts that inspire thoughtful reflection.
 - **Easy Response Mechanism:** Simply reply to messages to record your journal entries.
