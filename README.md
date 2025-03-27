@@ -4,6 +4,7 @@
 
 Pawndr is an innovative SMS journaling app designed to make self-reflection simple, engaging, and seamlessly integrated into your daily life.
 
+![image](https://github.com/user-attachments/assets/282b5e5a-4942-4e3a-8c38-ba2dba481110)
 Checkout our devpost: https://devpost.com/software/pawndr-kvlmgj
 
 ### Features
